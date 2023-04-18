@@ -6,6 +6,8 @@ def type = "java"
 def product = "civil"
 def component = "commons"
 
-withPipeline(type, product, component) {
-  nonServiceApp()
+withPactTestOnlyPipeline(type, product, component) {
+    enablePactAs([
+            AppPipelineDsl.PactRoles.CONSUMER
+    ])
 }
