@@ -4,7 +4,7 @@
 
 def type = "java"
 def product = "civil"
-def component = "migration"
+def component = "commons"
 
 withPipeline(type, product, component) {
   nonServiceApp()
