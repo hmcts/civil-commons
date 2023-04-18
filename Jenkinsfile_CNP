@@ -1,0 +1,10 @@
+#!groovy
+
+@Library("Infrastructure")
+
+def type = "java"
+def product = "civil"
+def component = "commons"
+
+sectionBuildAndTest(type, product, component) {
+}
