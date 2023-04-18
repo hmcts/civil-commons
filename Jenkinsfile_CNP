@@ -7,7 +7,5 @@ def product = "civil"
 def component = "migration"
 
 withPipeline(type, product, component) {
-  enableAksStagingDeployment()
-  disableLegacyDeployment()
   nonServiceApp()
 }
