@@ -36,16 +36,14 @@ class CategoryServiceTest {
     private final FeignException notFoundFeignException = new FeignException.NotFound(
         "not found message",
         Request.create(GET, "", Map.of(), new byte[]{}, UTF_8, null),
-        "not found response body".getBytes(UTF_8),
-        Map.of()
-        );
+        "not found response body".getBytes(UTF_8)
+    );
 
     private final FeignException forbiddenException = new FeignException.Forbidden(
         "forbidden message",
         Request.create(GET, "", Map.of(), new byte[]{}, UTF_8, null),
-        "forbidden response body".getBytes(UTF_8),
-        Map.of()
-        );
+        "forbidden response body".getBytes(UTF_8)
+    );
 
     private final CategorySearchResult categorySearchResult = CategorySearchResult.builder().build();
 
@@ -64,7 +62,8 @@ class CategoryServiceTest {
             any(),
             any(),
             any(),
-            any())).willReturn(categorySearchResult);
+            any()
+        )).willReturn(categorySearchResult);
         given(authTokenGenerator.generate()).willReturn(SERVICE_AUTH_TOKEN);
     }
 
@@ -73,7 +72,8 @@ class CategoryServiceTest {
         var category = categoryService.findCategoryByCategoryIdAndServiceId(AUTH_TOKEN, CATEGORY_ID, SERVICE_ID);
 
         verify(listOfValuesApi).findCategoryByCategoryIdAndServiceId(CATEGORY_ID, SERVICE_ID, AUTH_TOKEN,
-                                                                     authTokenGenerator.generate());
+                                                                     authTokenGenerator.generate()
+        );
         assertThat(category).isEqualTo(Optional.of(categorySearchResult));
     }
 
@@ -83,7 +83,8 @@ class CategoryServiceTest {
             .willThrow(notFoundFeignException);
         var category = categoryService.findCategoryByCategoryIdAndServiceId(AUTH_TOKEN, CATEGORY_ID, WRONG_SERVICE_ID);
         verify(listOfValuesApi).findCategoryByCategoryIdAndServiceId(CATEGORY_ID, WRONG_SERVICE_ID, AUTH_TOKEN,
-                                                                     authTokenGenerator.generate());
+                                                                     authTokenGenerator.generate()
+        );
         assertThat(category).isEmpty();
     }
 
@@ -91,9 +92,14 @@ class CategoryServiceTest {
     void shouldReturnEmptyOptional_whenAccessForbidden() {
         given(listOfValuesApi.findCategoryByCategoryIdAndServiceId(any(), any(), eq(AUTH_TOKEN_UNAUTHORISED), any()))
             .willThrow(forbiddenException);
-        var category = categoryService.findCategoryByCategoryIdAndServiceId(AUTH_TOKEN_UNAUTHORISED, CATEGORY_ID, SERVICE_ID);
+        var category = categoryService.findCategoryByCategoryIdAndServiceId(
+            AUTH_TOKEN_UNAUTHORISED,
+            CATEGORY_ID,
+            SERVICE_ID
+        );
         verify(listOfValuesApi).findCategoryByCategoryIdAndServiceId(CATEGORY_ID, SERVICE_ID, AUTH_TOKEN_UNAUTHORISED,
-                                                                     authTokenGenerator.generate());
+                                                                     authTokenGenerator.generate()
+        );
         assertThat(category).isEmpty();
     }
 }
