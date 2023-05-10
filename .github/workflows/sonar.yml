@@ -40,17 +40,17 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
 
-      - name: Check
-        run: ./gradlew check
+      # - name: Check
+      #   run: ./gradlew check
 
-      - name: Build
-        run: ./gradlew build
+      # - name: Build
+      #   run: ./gradlew build
 
-      - name: Test
-        run: ./gradlew test
+      # - name: Test
+      #   run: ./gradlew test
 
-      # - name: Build and analyze
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #   run: ./gradlew build sonarqube --info
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: ./gradlew build sonarqube --info
