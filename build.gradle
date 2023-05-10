@@ -66,7 +66,7 @@ project.tasks['sonarqube'].dependsOn jacocoTestReport
 sonarqube {
   properties {
     property "sonar.projectName", "Reform :: Civil Commons Library"
-    property "sonar.projectKey", "uk.gov.hmcts.reform:spring-boot-template"
+    property "sonar.projectKey", "uk.gov.hmcts.reform:civil-commons"
   }
 }
 
