@@ -1,4 +1,4 @@
-name: SonarCloud
+name: Sonar
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build and analyze
+    name: Sonar Scan
     runs-on: ubuntu-latest
     steps:
 
