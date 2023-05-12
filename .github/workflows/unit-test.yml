@@ -1,4 +1,4 @@
-name: Gradle Unit Test
+name: Unit Test
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   unit-tests:
-    name: Gradle Unit Test
+    name: Unit Test
     runs-on: ubuntu-latest
     steps:
 
