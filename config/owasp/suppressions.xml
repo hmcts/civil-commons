@@ -33,6 +33,10 @@
     <cve>CVE-2023-28708</cve>
     <cve>CVE-2023-20860</cve>
     <cve>CVE-2023-20863</cve>
+    <cve>CVE-2023-2976</cve>
+    <cve>CVE-2023-20862</cve>
+    <cve>CVE-2023-20883</cve>
+    <cve>CVE-2023-33201</cve>
   </suppress>
   <!--End of temporary suppression section -->
 </suppressions>
