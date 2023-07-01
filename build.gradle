@@ -250,8 +250,10 @@ publishing {
   publications {
     mavenJava(MavenPublication) {
       from components.java
-      artifact sourcesJar
-      artifact javadocJar
+      artifact bootJar
+      groupId project.group
+      artifactId rootProject.name
+      version project.version
 
       pom {
         name = 'Civil Commons Library'
