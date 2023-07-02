@@ -239,18 +239,17 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
   from javadoc.destinationDir
 }
 
-artifacts {
-  archives sourcesJar
-  archives javadocJar
-}
+//artifacts {
+//  archives sourcesJar
+//  archives javadocJar
+//}
 
 def gitRepo = "https://github.com/hmcts/civil-commons"
 
 publishing {
   publications {
-    mavenJava(MavenPublication) {
-      from components.java
-      artifact bootJar
+    Main(MavenPublication) {
+      artifact jar
       groupId project.group
       artifactId rootProject.name
       version project.version
