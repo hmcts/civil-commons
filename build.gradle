@@ -65,6 +65,7 @@ jacocoTestReport {
 }
 
 project.tasks['sonarqube'].dependsOn jacocoTestReport
+project.tasks['bootDistZip'].dependsOn jar
 
 sonarqube {
   properties {
@@ -196,8 +197,6 @@ dependencies {
  bootJar {
    enabled = false
  }
-
-bootDistZip.dependsOn jar
 
 jar {
   manifest {
