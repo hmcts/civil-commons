@@ -193,9 +193,9 @@ dependencies {
   }
 }
 
-bootJar {
-  enabled = false
-}
+// bootJar {
+//   enabled = false
+// }
 
 jar {
   manifest {
