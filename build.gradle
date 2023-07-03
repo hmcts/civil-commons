@@ -13,7 +13,7 @@ plugins {
 
 def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
 
-group = 'uk.gov.hmcts.reform'
+group = 'com.github.hmcts'
 version = buildNumber
 
 java {
