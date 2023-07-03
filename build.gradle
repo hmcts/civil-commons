@@ -64,9 +64,6 @@ jacocoTestReport {
 }
 
 project.tasks['sonarqube'].dependsOn jacocoTestReport
-project.tasks['bootDistZip'].dependsOn jar
-project.tasks['bootDistTar'].dependsOn jar
-project.tasks['bootStartScripts'].dependsOn jar
 
 sonarqube {
   properties {
