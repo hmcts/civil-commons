@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class HearingGetResponse {
 
     private HearingRequestDetails requestDetails;
