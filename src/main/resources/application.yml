@@ -22,7 +22,7 @@ launchdarkly:
 
 role-assignment-service:
   api:
-    url: http://localhost:4096
+    url: ${ROLE_ASSIGNMENT_SERVICE_API_URL:http://localhost:4096}
 
 fees:
   api:
