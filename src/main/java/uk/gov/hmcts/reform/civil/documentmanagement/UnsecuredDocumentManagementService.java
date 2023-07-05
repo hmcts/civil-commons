@@ -11,6 +11,7 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
+import uk.gov.hmcts.reform.civil.documentmanagement.model.DownloadedDocumentResponse;
 import uk.gov.hmcts.reform.civil.documentmanagement.model.UploadedDocument;
 import uk.gov.hmcts.reform.civil.helpers.LocalDateTimeHelper;
 import uk.gov.hmcts.reform.civil.documentmanagement.model.CaseDocument;
@@ -161,6 +162,31 @@ public class UnsecuredDocumentManagementService implements DocumentManagementSer
                 .map(ByteArrayResource.class::cast)
                 .map(ByteArrayResource::getByteArray)
                 .orElseThrow(RuntimeException::new);
+        } catch (Exception ex) {
+            log.error("Failed downloading document {}", documentPath, ex);
+            throw new DocumentDownloadException(documentPath, ex);
+        }
+    }
+
+    @Retryable(value = DocumentDownloadException.class, backoff = @Backoff(delay = 200))
+    @Override
+    public DownloadedDocumentResponse downloadDocumentWithMetaData(String authorisation, String documentPath) {
+        log.info("Downloading document {}", documentPath);
+        try {
+            UserInfo userInfo = userService.getUserInfo(authorisation);
+            String userRoles = String.join(",", this.documentManagementConfiguration.getUserRoles());
+            Document documentMetadata = getDocumentMetaData(authorisation, documentPath);
+
+            ResponseEntity<Resource> responseEntity = documentDownloadClientApi.downloadBinary(
+                authorisation,
+                authTokenGenerator.generate(),
+                userRoles,
+                userInfo.getUid(),
+                URI.create(documentMetadata.links.binary.href).getPath()
+            );
+
+            return new DownloadedDocumentResponse(responseEntity.getBody(), documentMetadata.originalDocumentName,
+                                                  documentMetadata.mimeType);
         } catch (Exception ex) {
             log.error("Failed downloading document {}", documentPath, ex);
             throw new DocumentDownloadException(documentPath, ex);
