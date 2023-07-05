@@ -21,6 +21,7 @@ import uk.gov.hmcts.reform.ccd.document.am.model.Document;
 import uk.gov.hmcts.reform.ccd.document.am.model.DocumentUploadRequest;
 import uk.gov.hmcts.reform.ccd.document.am.model.UploadResponse;
 import uk.gov.hmcts.reform.civil.documentmanagement.model.CaseDocument;
+import uk.gov.hmcts.reform.civil.documentmanagement.model.DownloadedDocumentResponse;
 import uk.gov.hmcts.reform.civil.documentmanagement.model.PDF;
 import uk.gov.hmcts.reform.civil.documentmanagement.model.UploadedDocument;
 import uk.gov.hmcts.reform.civil.service.UserService;
@@ -288,6 +289,108 @@ class SecuredDocumentManagementServiceTest {
             DocumentDownloadException documentManagementException = assertThrows(
                 DocumentDownloadException.class,
                 () -> documentManagementService.downloadDocument(BEARER_TOKEN, documentPath)
+            );
+
+            assertEquals(format(MESSAGE_TEMPLATE, documentPath), documentManagementException.getMessage());
+
+            verify(caseDocumentClientApi).getMetadataForDocument(anyString(), anyString(), eq(documentId));
+        }
+
+        @Test
+        void shouldDownloadDocumentByDocumentPathMetaData() throws JsonProcessingException {
+            //Given
+            Document document = mapper.readValue(
+                ResourceReader.readString("document-management/download.success.json"),
+                Document.class
+            );
+            String documentPath = "/documents/85d97996-22a5-40d7-882e-3a382c8ae1b7";
+            UUID documentId = getDocumentIdFromSelfHref(documentPath);
+
+            when(caseDocumentClientApi.getMetadataForDocument(
+                     anyString(),
+                     anyString(),
+                     eq(documentId)
+                 )
+            ).thenReturn(document);
+
+            when(caseDocumentClientApi.getDocumentBinary(
+                     anyString(),
+                     anyString(),
+                     eq(documentId)
+                 )
+            ).thenReturn(responseEntity);
+
+            when(responseEntity.getBody()).thenReturn(new ByteArrayResource("test".getBytes()));
+
+            //When
+            DownloadedDocumentResponse expectedResult =
+                new DownloadedDocumentResponse(new ByteArrayResource("test".getBytes()), "TEST_DOCUMENT_1.pdf",
+                                               "application/pdf");
+
+            //Then
+            assertEquals(expectedResult, documentManagementService.downloadDocumentWithMetaData(BEARER_TOKEN, documentPath));
+        }
+
+        @Test
+        void shouldDownloadDocumentFromDocumentManagementIfNullCdam() throws JsonProcessingException {
+
+            Document document = mapper.readValue(
+                ResourceReader.readString("document-management/download.success.json"),
+                Document.class
+            );
+            String documentPath = URI.create(document.links.self.href).getPath();
+            String documentBinary = URI.create(document.links.binary.href).getPath().replaceFirst("/", "");
+            UUID documentId = getDocumentIdFromSelfHref(documentPath);
+
+            when(caseDocumentClientApi.getMetadataForDocument(
+                     anyString(),
+                     anyString(),
+                     eq(documentId)
+                 )
+            ).thenReturn(document);
+
+            when(responseEntity.getBody()).thenReturn(new ByteArrayResource("test".getBytes()));
+
+            when(documentDownloadClient.downloadBinary(
+                     anyString(),
+                     anyString(),
+                     eq(USER_ROLES_JOINED),
+                     anyString(),
+                     eq(documentBinary)
+                 )
+            ).thenReturn(responseEntity);
+
+            DownloadedDocumentResponse expectedResult =
+                new DownloadedDocumentResponse(new ByteArrayResource("test".getBytes()), "TEST_DOCUMENT_1.pdf",
+                                               "application/pdf");
+
+            assertEquals(expectedResult, documentManagementService.downloadDocumentWithMetaData(BEARER_TOKEN, documentPath));
+        }
+
+        @Test
+        void shouldThrow_whenDocumentDownloadMetaDataFails() throws JsonProcessingException {
+            Document document = mapper.readValue(
+                ResourceReader.readString("document-management/download.success.json"),
+                Document.class
+            );
+            String documentPath = "/documents/85d97996-22a5-40d7-882e-3a382c8ae1b7";
+            String documentBinary = "documents/85d97996-22a5-40d7-882e-3a382c8ae1b7/binary";
+            UUID documentId = getDocumentIdFromSelfHref(documentPath);
+
+            when(caseDocumentClientApi.getMetadataForDocument(
+                     anyString(),
+                     anyString(),
+                     eq(documentId)
+                 )
+            ).thenReturn(document);
+
+            when(documentDownloadClient
+                     .downloadBinary(anyString(), anyString(), eq(USER_ROLES_JOINED), anyString(), eq(documentBinary))
+            ).thenReturn(null);
+
+            DocumentDownloadException documentManagementException = assertThrows(
+                DocumentDownloadException.class,
+                () -> documentManagementService.downloadDocumentWithMetaData(BEARER_TOKEN, documentPath)
             );
 
             assertEquals(format(MESSAGE_TEMPLATE, documentPath), documentManagementException.getMessage());
