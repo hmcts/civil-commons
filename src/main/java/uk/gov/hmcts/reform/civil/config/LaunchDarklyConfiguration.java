@@ -3,7 +3,8 @@ package uk.gov.hmcts.reform.civil.config;
 import com.launchdarkly.sdk.server.LDClient;
 import com.launchdarkly.sdk.server.LDConfig;
 import com.launchdarkly.sdk.server.integrations.FileData;
-import com.launchdarkly.sdk.server.interfaces.DataSourceFactory;
+import com.launchdarkly.sdk.server.subsystems.ComponentConfigurer;
+import com.launchdarkly.sdk.server.subsystems.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,7 +48,7 @@ public class LaunchDarklyConfiguration {
      * @return a datasource able to combine the contents of all the files. If there are duplicated keys, the values
      *     on the first file have precedence
      */
-    private DataSourceFactory getDataSource(Path[] flagFilePaths) {
+    private ComponentConfigurer<DataSource> getDataSource(Path[] flagFilePaths) {
         return FileData.dataSource()
             .filePaths(flagFilePaths)
             .duplicateKeysHandling(FileData.DuplicateKeysHandling.IGNORE);
