@@ -231,6 +231,9 @@ public class NotificationsProperties {
     private String hearingListedNoFeeDefendantLrTemplate;
 
     @NotEmpty
+    private String hearingListedNoFeeDefendantLrTemplateHMC;
+
+    @NotEmpty
     private String hearingListedFeeClaimantLrTemplateHMC;
 
     @NotEmpty
