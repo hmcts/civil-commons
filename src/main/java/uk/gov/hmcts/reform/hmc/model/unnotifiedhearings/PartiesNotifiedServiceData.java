@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 public class PartiesNotifiedServiceData {
 
     private boolean hearingNoticeGenerated;
+    private List<HearingDay> days;
     private LocalDateTime hearingDate;
     private String hearingLocation;
 }
