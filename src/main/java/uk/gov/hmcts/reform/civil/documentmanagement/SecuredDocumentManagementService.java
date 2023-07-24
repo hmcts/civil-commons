@@ -191,7 +191,6 @@ public class SecuredDocumentManagementService implements DocumentManagementServi
         log.info("Downloading document {}", documentPath);
         try {
             UserInfo userInfo = userService.getUserInfo(authorisation);
-            log.info("user info: {}", userInfo);
             String userRoles = String.join(",", this.documentManagementConfiguration.getUserRoles());
             Document documentMetadata = getDocumentMetaData(authorisation, documentPath);
 
@@ -221,9 +220,6 @@ public class SecuredDocumentManagementService implements DocumentManagementServi
 
     public Document getDocumentMetaData(String authorisation, String documentPath) {
         log.info("Getting metadata for file {}", documentPath);
-        log.info("User auth: {}", authorisation);
-        String serviceAuth = authTokenGenerator.generate();
-        log.info("Service auth: {}", serviceAuth);
 
         try {
             return caseDocumentClientApi.getMetadataForDocument(
