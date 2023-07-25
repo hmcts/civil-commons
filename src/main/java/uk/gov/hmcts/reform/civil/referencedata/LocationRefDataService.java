@@ -33,10 +33,11 @@ public class LocationRefDataService {
     private final LRDConfiguration lrdConfiguration;
     private final AuthTokenGenerator authTokenGenerator;
 
-    public LocationRefData getCtscLocationUnSpec(String authToken) {
+    public LocationRefData getCtscLocation(String authToken, Boolean isSpec) {
         try {
+            String courtName = isSpec ? "Stoke CTSC" : "Salford CTSC";
             ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
-                buildURIforCtscUnspec(),
+                buildURIforCtsc(courtName),
                 HttpMethod.GET,
                 getHeaders(authToken),
                 new ParameterizedTypeReference<List<LocationRefData>>() {
@@ -44,41 +45,16 @@ public class LocationRefDataService {
             );
             List<LocationRefData> ctscLocations = responseEntity.getBody();
             if (ctscLocations == null || ctscLocations.isEmpty()) {
-                log.warn("Location Reference Data Lookup did not return any CTSC location for Salford CTSC");
+                log.warn("Location Reference Data Lookup did not return any CTSC location for %s", courtName);
                 return LocationRefData.builder().build();
             } else {
                 if (ctscLocations.size() > 1) {
-                    log.warn("Location Reference Data Lookup returned more than one CTSC location for Salford CTSC");
+                    log.warn("Location Reference Data Lookup returned more than one CTSC location for %s", courtName);
                 }
                 return ctscLocations.get(0);
             }
         } catch (Exception e) {
             log.error("Location Reference Data Lookup Failed for Salford CTSC - " + e.getMessage(), e);
-        }
-        return LocationRefData.builder().build();
-    }
-
-    public LocationRefData getCtscLocationSpec(String authToken) {
-        try {
-            ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
-                buildURIforCtscSpec(),
-                HttpMethod.GET,
-                getHeaders(authToken),
-                new ParameterizedTypeReference<List<LocationRefData>>() {
-                }
-            );
-            List<LocationRefData> ctscLocations = responseEntity.getBody();
-            if (ctscLocations == null || ctscLocations.isEmpty()) {
-                log.warn("Location Reference Data Lookup did not return any CTSC location for Stoke CTSC");
-                return LocationRefData.builder().build();
-            } else {
-                if (ctscLocations.size() > 1) {
-                    log.warn("Location Reference Data Lookup returned more than one CTSC location for Stoke CTSC");
-                }
-                return ctscLocations.get(0);
-            }
-        } catch (Exception e) {
-            log.error("Location Reference Data Lookup Failed for Stoke CTSC - " + e.getMessage(), e);
         }
         return LocationRefData.builder().build();
     }
@@ -190,17 +166,11 @@ public class LocationRefDataService {
         return builder.buildAndExpand(new HashMap<>()).toUri();
     }
 
-    private URI buildURIforCtscUnspec() {
-        String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
-        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
-            .queryParam("court_name", "Salford CTSC");
-        return builder.buildAndExpand(new HashMap<>()).toUri();
-    }
 
-    private URI buildURIforCtscSpec() {
+    private URI buildURIforCtsc(String courtName) {
         String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
-            .queryParam("court_name", "Stoke CTSC");
+            .queryParam("court_name", courtName);
         return builder.buildAndExpand(new HashMap<>()).toUri();
     }
 
