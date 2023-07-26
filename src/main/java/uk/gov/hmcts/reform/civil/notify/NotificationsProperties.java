@@ -326,7 +326,7 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyRespondentLiPMediationSuccessfulTemplateWelsh;
 
-     @NotEmpty
+    @NotEmpty
     private String notifyDefendantLIPClaimantSettleTheClaimTemplate;
 
 }
