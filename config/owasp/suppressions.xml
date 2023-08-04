@@ -23,6 +23,12 @@
     <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.+?$</packageUrl>
     <cve>CVE-2020-5408</cve>
   </suppress>
+  <suppress until="2030-01-01">
+    <notes>
+      False Positive - we are not using any wildcard patterns for spring security configuration
+    </notes>
+    <cve>CVE-2023-34034</cve>
+  </suppress>
   <!--End of false positives section -->
 
   <!--Please add all the temporary suppression under the below section-->
