@@ -329,7 +329,4 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyLipUpdateTemplate;
 
-    @NotEmpty
-    private String notifyDefendantLIPClaimantSettleTheClaimTemplate;
-
 }
