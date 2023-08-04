@@ -328,6 +328,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyDefendantLIPClaimantSettleTheClaimTemplate;
+
     @NotEmpty
     private String hearingNotificationLipDefendantTemplate;
 
