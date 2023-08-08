@@ -330,6 +330,6 @@ public class NotificationsProperties {
     private String notifyDefendantLIPClaimantSettleTheClaimTemplate;
 
     @NotEmpty
-    private string notifyLiPClaimantClaimSubmittedAndPayClaimFeeTemplate;
+    private String notifyLiPClaimantClaimSubmittedAndPayClaimFeeTemplate;
 
 }
