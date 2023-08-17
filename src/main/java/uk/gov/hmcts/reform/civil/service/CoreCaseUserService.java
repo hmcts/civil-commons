@@ -108,7 +108,7 @@ public class CoreCaseUserService {
             .organisationId(organisationId)
             .build();
 
-       removeAccessFromRole(caseAssignedUserRoleWithOrganisation, caaAccessToken);
+        removeAccessFromRole(caseAssignedUserRoleWithOrganisation, caaAccessToken);
     }
 
     private void removeAccessFromRole(CaseAssignedUserRoleWithOrganisation caseAssignedUserRoleWithOrganisation, String caaAccessToken) {
