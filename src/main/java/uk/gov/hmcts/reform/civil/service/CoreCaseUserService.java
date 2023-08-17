@@ -111,7 +111,7 @@ public class CoreCaseUserService {
        removeAccessFromRole(caseAssignedUserRoleWithOrganisation, caaAccessToken);
     }
 
-    private void removeAccessFromRole (CaseAssignedUserRoleWithOrganisation caseAssignedUserRoleWithOrganisation, String caaAccessToken){
+    private void removeAccessFromRole(CaseAssignedUserRoleWithOrganisation caseAssignedUserRoleWithOrganisation, String caaAccessToken) {
         caseAccessDataStoreApi.removeCaseUserRoles(
             caaAccessToken,
             authTokenGenerator.generate(),
