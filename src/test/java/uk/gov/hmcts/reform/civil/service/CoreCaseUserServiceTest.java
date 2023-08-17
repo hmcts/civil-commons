@@ -18,9 +18,13 @@ import uk.gov.hmcts.reform.ccd.model.CaseAssignedUserRolesResource;
 import uk.gov.hmcts.reform.civil.config.CrossAccessUserConfiguration;
 import uk.gov.hmcts.reform.civil.enums.CaseRole;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -121,7 +125,7 @@ class CoreCaseUserServiceTest {
     class RemoveCaseAssignment {
 
         @Test
-        void shouldRemoveCaseAssignmentToUser_WhenUserWithCaseRoleAlreadyExist() {
+        void shouldRemoveCreatorRoleCaseAssignmentToUser_WhenUserWithCaseRoleAlreadyExist() {
             CaseAssignedUserRole caseAssignedUserRole = CaseAssignedUserRole.builder()
                 .userId(USER_ID)
                 .caseRole(CaseRole.CREATOR.getFormattedName())
@@ -141,7 +145,7 @@ class CoreCaseUserServiceTest {
         }
 
         @Test
-        void shouldNotRemoveCaseAssignmentToUser_WhenUserWithCaseRoleDoesNotExist() {
+        void shouldNotRemoveCreatorRoleCaseAssignmentToUser_WhenUserWithCaseRoleDoesNotExist() {
             CaseAssignedUserRole caseAssignedUserRole
                 = CaseAssignedUserRole.builder().userId(USER_ID)
                 .caseRole(CaseRole.APPLICANTSOLICITORONE.getFormattedName())
@@ -159,6 +163,36 @@ class CoreCaseUserServiceTest {
                 getCaseAssignedUserRolesRequest(CaseRole.CREATOR)
             );
         }
+
+       @Test
+       void shouldUnassignCase_WhenUserWithRoleIsAssignedToCase() {
+           CaseAssignedUserRole caseAssignedUserRole
+               = CaseAssignedUserRole.builder().userId(USER_ID)
+               .caseRole(CaseRole.DEFENDANT.getFormattedName())
+               .build();
+
+           given(caseAccessDataStoreApi.getUserRoles(anyString(), anyString(), anyList())).willReturn(
+               CaseAssignedUserRolesResource.builder().caseAssignedUserRoles(List.of(caseAssignedUserRole))
+                   .build());
+           service.unassignCase(CASE_ID, USER_ID, ORG_ID, CaseRole.DEFENDANT);
+           verify(caseAccessDataStoreApi).removeCaseUserRoles(
+               CAA_USER_AUTH_TOKEN,
+               SERVICE_AUTH_TOKEN,
+               getCaseAssignedUserRolesRequest(CaseRole.DEFENDANT)
+           );
+       }
+
+       @Test
+       void shouldNotUnassignCase_WhenUserWithRoleIsNotAssignedToCase() {
+           given(caseAccessDataStoreApi.getUserRoles(anyString(), anyString(), anyList())).willReturn(
+               CaseAssignedUserRolesResource.builder().caseAssignedUserRoles(Collections.emptyList()).build());
+           service.unassignCase(CASE_ID, USER_ID, ORG_ID, CaseRole.DEFENDANT);
+           verify(caseAccessDataStoreApi, never()).removeCaseUserRoles(
+               CAA_USER_AUTH_TOKEN,
+               SERVICE_AUTH_TOKEN,
+               getCaseAssignedUserRolesRequest(CaseRole.DEFENDANT)
+           );
+       }
 
         private CaseAssignedUserRolesRequest getCaseAssignedUserRolesRequest(CaseRole caseRole) {
             CaseAssignedUserRoleWithOrganisation caseAssignedUserRoleWithOrganisation
