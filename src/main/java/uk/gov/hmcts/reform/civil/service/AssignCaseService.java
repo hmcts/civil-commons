@@ -19,8 +19,7 @@ public class AssignCaseService {
 
     public void assignCase(String authorisation, String caseId, Optional<CaseRole> caseRole) {
         String userId = userService.getUserInfo(authorisation).getUid();
-        String organisationId = organisationService.findOrganisation(authorisation)
-            .map(Organisation::getOrganisationIdentifier).orElse(null);
+        String organisationId = getOrganisationId(authorisation, caseRole);
         coreCaseUserService.assignCase(
             caseId,
             userId,
@@ -28,4 +27,18 @@ public class AssignCaseService {
             caseRole.orElse(CaseRole.RESPONDENTSOLICITORONE)
         );
     }
+
+    private String getOrganisationId(String authorisation, Optional<CaseRole> caseRole) {
+        String id = null;
+        if (caseRole.map(CaseRole::isProfessionalRole).orElse(false)) {
+            try {
+                id = organisationService.findOrganisation(authorisation)
+                    .map(Organisation::getOrganisationIdentifier).orElse(null);
+            } catch (Exception e) {
+                log.error("Error getting organisation id", e);
+            }
+        }
+        return id;
+    }
+
 }
