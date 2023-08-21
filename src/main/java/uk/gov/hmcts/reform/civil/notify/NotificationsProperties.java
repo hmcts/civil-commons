@@ -329,4 +329,16 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyRespondentLiPMediationSuccessfulTemplateWelsh;
 
+    @NotEmpty
+    private String notifyDefendantLIPClaimantSettleTheClaimTemplate;
+
+    @NotEmpty
+    private String  evidenceUploadLipTemplate;
+
+    @NotEmpty
+    private String notifyLipUpdateTemplate;
+
+    @NotEmpty
+    private String hearingNotificationLipDefendantTemplate;
+
 }
