@@ -9,6 +9,7 @@ import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.sendletter.api.LetterWithPdfsRequest;
 import uk.gov.hmcts.reform.sendletter.api.SendLetterApi;
 
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,7 @@ class BulkPrintServiceTest {
     private final String authentication = "Authentication";
     private final String letterType = "Letter type";
     private final String claimId = "1";
+    private final List<String> recipients = Arrays.asList("person one", "person two");
 
     private final Map<String, Object> additionalInformation =
         Map.of(ADDITIONAL_DATA_LETTER_TYPE_KEY, letterType,
@@ -49,7 +51,7 @@ class BulkPrintServiceTest {
     @Test
     void shouldSendLetterToBulkPrintSuccessfully() {
         given(authTokenGenerator.generate()).willReturn(authentication);
-        bulkPrintService.printLetter(letterTemplate, claimId, claimId, letterType);
+        bulkPrintService.printLetter(letterTemplate, claimId, claimId, letterType, recipients);
         verify(sendLetterApi).sendLetter(refEq(authentication), refEq(letter));
     }
 
