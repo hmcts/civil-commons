@@ -17,10 +17,7 @@ import java.util.Map;
 import static org.mockito.ArgumentMatchers.refEq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
-import static uk.gov.hmcts.reform.civil.service.BulkPrintService.ADDITIONAL_DATA_CASE_IDENTIFIER_KEY;
-import static uk.gov.hmcts.reform.civil.service.BulkPrintService.ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY;
-import static uk.gov.hmcts.reform.civil.service.BulkPrintService.ADDITIONAL_DATA_LETTER_TYPE_KEY;
-import static uk.gov.hmcts.reform.civil.service.BulkPrintService.XEROX_TYPE_PARAMETER;
+import static uk.gov.hmcts.reform.civil.service.BulkPrintService.*;
 
 @ExtendWith(SpringExtension.class)
 class BulkPrintServiceTest {
@@ -40,7 +37,8 @@ class BulkPrintServiceTest {
     private final Map<String, Object> additionalInformation =
         Map.of(ADDITIONAL_DATA_LETTER_TYPE_KEY, letterType,
                ADDITIONAL_DATA_CASE_IDENTIFIER_KEY, claimId,
-               ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY, claimId
+               ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY, claimId,
+               RECIPIENTS, recipients
         );
     private final byte[] letterTemplate = new byte[]{1, 2, 3};
     private final LetterWithPdfsRequest letter =
