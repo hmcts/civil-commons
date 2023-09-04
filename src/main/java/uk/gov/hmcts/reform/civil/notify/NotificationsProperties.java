@@ -145,7 +145,13 @@ public class NotificationsProperties {
     private String notifyRespondentSolicitorPartAdmitPayImmediatelyAcceptedSpec;
 
     @NotEmpty
+    private String claimantSolicitorConfirmsToProceedSpec1v1;
+
+    @NotEmpty
     private String claimantSolicitorConfirmsToProceedSpec;
+
+    @NotEmpty
+    private String respondentSolicitorNotifyToProceedSpec1v1;
 
     @NotEmpty
     private String respondentSolicitorNotifyToProceedSpec;
