@@ -109,6 +109,9 @@ public class NotificationsProperties {
     private String claimantSolicitorDefendantResponseForSpec;
 
     @NotEmpty
+    private String claimantSolicitorDefendantResponse1v2DSForSpec;
+
+    @NotEmpty
     private String claimantSolicitorImmediatelyDefendantResponseForSpec;
 
     @NotEmpty
@@ -325,5 +328,17 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyRespondentLiPMediationSuccessfulTemplateWelsh;
+
+    @NotEmpty
+    private String notifyDefendantLIPClaimantSettleTheClaimTemplate;
+
+    @NotEmpty
+    private String  evidenceUploadLipTemplate;
+
+    @NotEmpty
+    private String notifyLipUpdateTemplate;
+
+    @NotEmpty
+    private String hearingNotificationLipDefendantTemplate;
 
 }

@@ -13,5 +13,5 @@ public class Attendees {
 
     private String partyID;
 
-    private String hearingSubChannel;
+    private HearingSubChannel hearingSubChannel;
 }
