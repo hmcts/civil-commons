@@ -109,6 +109,9 @@ public class NotificationsProperties {
     private String claimantSolicitorDefendantResponseForSpec;
 
     @NotEmpty
+    private String claimantSolicitorDefendantResponse1v2DSForSpec;
+
+    @NotEmpty
     private String claimantSolicitorImmediatelyDefendantResponseForSpec;
 
     @NotEmpty
@@ -341,4 +344,10 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyLiPClaimantClaimSubmittedAndPayClaimFeeTemplate;
     
+    @NotEmpty
+    private String notifyLiPClaimantDefendantResponded;
+
+    @NotEmpty
+    private String notifyLiPClaimantDefendantChangedContactDetails;
+
 }
