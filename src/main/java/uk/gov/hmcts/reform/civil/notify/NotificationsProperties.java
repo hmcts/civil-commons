@@ -341,4 +341,10 @@ public class NotificationsProperties {
     @NotEmpty
     private String hearingNotificationLipDefendantTemplate;
 
+    @NotEmpty
+    private String notifyLiPClaimantDefendantResponded;
+
+    @NotEmpty
+    private String notifyLiPClaimantDefendantChangedContactDetails;
+
 }
