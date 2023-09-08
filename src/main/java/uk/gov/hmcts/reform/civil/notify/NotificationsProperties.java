@@ -118,7 +118,7 @@ public class NotificationsProperties {
     private String respondentSolicitorDefendantResponseForSpec;
 
     @NotEmpty
-    private String respondentSolicitorDefendantResponseForSpec1vs1;
+    private String respondentSolicitorDefendantResponseForSpec1v1;
 
     @NotEmpty
     private String respondentDefendantResponseForSpec;
