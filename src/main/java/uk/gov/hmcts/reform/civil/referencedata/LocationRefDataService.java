@@ -14,7 +14,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.civil.referencedata.exception.ReferenceDataLookupException;
 import uk.gov.hmcts.reform.civil.referencedata.model.LocationRefData;
-import uk.gov.hmcts.reform.hmc.exception.HmcException;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -167,7 +166,6 @@ public class LocationRefDataService {
             .queryParam("court_venue_name", "County Court Money Claims Centre");
         return builder.buildAndExpand(new HashMap<>()).toUri();
     }
-
 
     private URI buildURIforCtsc(String courtName) {
         String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
