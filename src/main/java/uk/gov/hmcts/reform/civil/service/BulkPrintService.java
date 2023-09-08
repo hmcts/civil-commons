@@ -24,6 +24,7 @@ public class BulkPrintService {
     protected static final String ADDITIONAL_DATA_LETTER_TYPE_KEY = "letterType";
     protected static final String ADDITIONAL_DATA_CASE_IDENTIFIER_KEY = "caseIdentifier";
     protected static final String ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY = "caseReferenceNumber";
+    protected static final String RECIPIENTS = "recipients";
 
     private final SendLetterApi sendLetterApi;
     private final AuthTokenGenerator authTokenGenerator;
@@ -33,10 +34,10 @@ public class BulkPrintService {
         backoff = @Backoff(delay = 200)
     )
     public SendLetterResponse printLetter(byte[] letterContent, String claimId,
-                                          String claimReference, String letterType) {
+                                          String claimReference, String letterType, List<String> personList) {
         String authorisation = authTokenGenerator.generate();
         LetterWithPdfsRequest letter =
-            generateLetter(additionalInformation(claimId, claimReference, letterType), letterContent);
+            generateLetter(additionalInformation(claimId, claimReference, letterType, personList), letterContent);
         return sendLetterApi.sendLetter(authorisation, letter);
     }
 
@@ -45,11 +46,13 @@ public class BulkPrintService {
         return new LetterWithPdfsRequest(List.of(templateLetter), XEROX_TYPE_PARAMETER, letterParams);
     }
 
-    private Map<String, Object> additionalInformation(String claimId, String claimReference, String letterType) {
+    private Map<String, Object> additionalInformation(String claimId, String claimReference, String letterType,
+                                                      List<String> personList) {
         Map<String, Object> additionalData = new HashMap<>();
         additionalData.put(ADDITIONAL_DATA_LETTER_TYPE_KEY, letterType);
         additionalData.put(ADDITIONAL_DATA_CASE_IDENTIFIER_KEY, claimId);
         additionalData.put(ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY, claimReference);
+        additionalData.put(RECIPIENTS, personList);
         return additionalData;
     }
 }

@@ -44,6 +44,19 @@ public class CoreCaseUserService {
         }
     }
 
+    public void unassignCase(String caseId, String userId, String organisationId, CaseRole caseRole) {
+        String caaAccessToken = getCaaAccessToken();
+        if (userWithCaseRoleExistsOnCase(caseId, caaAccessToken, caseRole)) {
+            CaseAssignedUserRoleWithOrganisation caseAssignedUserRoleWithOrganisation = CaseAssignedUserRoleWithOrganisation.builder()
+                .caseDataId(caseId)
+                .userId(userId)
+                .caseRole(caseRole.getFormattedName())
+                .organisationId(organisationId)
+                .build();
+            removeAccessFromRole(caseAssignedUserRoleWithOrganisation, caaAccessToken);
+        }
+    }
+
     public void removeCreatorRoleCaseAssignment(String caseId, String userId, String organisationId) {
 
         String caaAccessToken = getCaaAccessToken();
@@ -95,6 +108,10 @@ public class CoreCaseUserService {
             .organisationId(organisationId)
             .build();
 
+        removeAccessFromRole(caseAssignedUserRoleWithOrganisation, caaAccessToken);
+    }
+
+    private void removeAccessFromRole(CaseAssignedUserRoleWithOrganisation caseAssignedUserRoleWithOrganisation, String caaAccessToken) {
         caseAccessDataStoreApi.removeCaseUserRoles(
             caaAccessToken,
             authTokenGenerator.generate(),

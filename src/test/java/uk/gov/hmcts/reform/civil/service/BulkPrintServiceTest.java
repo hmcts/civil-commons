@@ -9,6 +9,7 @@ import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.sendletter.api.LetterWithPdfsRequest;
 import uk.gov.hmcts.reform.sendletter.api.SendLetterApi;
 
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import static uk.gov.hmcts.reform.civil.service.BulkPrintService.ADDITIONAL_DATA
 import static uk.gov.hmcts.reform.civil.service.BulkPrintService.ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY;
 import static uk.gov.hmcts.reform.civil.service.BulkPrintService.ADDITIONAL_DATA_LETTER_TYPE_KEY;
 import static uk.gov.hmcts.reform.civil.service.BulkPrintService.XEROX_TYPE_PARAMETER;
+import static uk.gov.hmcts.reform.civil.service.BulkPrintService.RECIPIENTS;
 
 @ExtendWith(SpringExtension.class)
 class BulkPrintServiceTest {
@@ -34,11 +36,13 @@ class BulkPrintServiceTest {
     private final String authentication = "Authentication";
     private final String letterType = "Letter type";
     private final String claimId = "1";
+    private final List<String> recipients = Arrays.asList("person one", "person two");
 
     private final Map<String, Object> additionalInformation =
         Map.of(ADDITIONAL_DATA_LETTER_TYPE_KEY, letterType,
                ADDITIONAL_DATA_CASE_IDENTIFIER_KEY, claimId,
-               ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY, claimId
+               ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY, claimId,
+               RECIPIENTS, recipients
         );
     private final byte[] letterTemplate = new byte[]{1, 2, 3};
     private final LetterWithPdfsRequest letter =
@@ -49,7 +53,7 @@ class BulkPrintServiceTest {
     @Test
     void shouldSendLetterToBulkPrintSuccessfully() {
         given(authTokenGenerator.generate()).willReturn(authentication);
-        bulkPrintService.printLetter(letterTemplate, claimId, claimId, letterType);
+        bulkPrintService.printLetter(letterTemplate, claimId, claimId, letterType, recipients);
         verify(sendLetterApi).sendLetter(refEq(authentication), refEq(letter));
     }
 
