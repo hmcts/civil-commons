@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
+import uk.gov.hmcts.reform.civil.referencedata.exception.ReferenceDataLookupException;
 import uk.gov.hmcts.reform.civil.referencedata.model.LocationRefData;
+import uk.gov.hmcts.reform.hmc.exception.HmcException;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -55,8 +57,8 @@ public class LocationRefDataService {
             }
         } catch (Exception e) {
             log.error("Location Reference Data Lookup Failed for Salford CTSC - " + e.getMessage(), e);
+            throw new ReferenceDataLookupException(e);
         }
-        return LocationRefData.builder().build();
     }
 
     public LocationRefData getCcmccLocation(String authToken) {
@@ -80,8 +82,8 @@ public class LocationRefDataService {
             }
         } catch (Exception e) {
             log.error("Location Reference Data Lookup Failed - " + e.getMessage(), e);
+            throw new ReferenceDataLookupException(e);
         }
-        return LocationRefData.builder().build();
     }
 
     public List<LocationRefData> getCourtLocationsForDefaultJudgments(String authToken) {
