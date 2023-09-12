@@ -55,7 +55,7 @@ public class LocationRefDataService {
                 return ctscLocations.get(0);
             }
         } catch (Exception e) {
-            log.error("Location Reference Data Lookup Failed for Salford CTSC - " + e.getMessage(), e);
+            log.error("Location Reference Data Lookup Failed for CTSC - " + e.getMessage(), e);
             throw new ReferenceDataLookupException(e);
         }
     }
