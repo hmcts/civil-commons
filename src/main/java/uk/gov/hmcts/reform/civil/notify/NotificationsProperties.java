@@ -350,4 +350,9 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyLiPClaimantDefendantChangedContactDetails;
 
+    @NotEmpty
+    private String notifyApplicant1EnteredBreathingSpaceLip;
+
+    @NotEmpty
+    private String notifyEnteredBreathingSpaceForDefendantLip;
 }
