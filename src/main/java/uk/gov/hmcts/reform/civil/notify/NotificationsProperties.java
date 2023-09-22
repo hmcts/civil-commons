@@ -350,4 +350,6 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyLiPClaimantDefendantChangedContactDetails;
 
+    @NotEmpty
+    private String notifyDefendantLrTemplate;
 }
