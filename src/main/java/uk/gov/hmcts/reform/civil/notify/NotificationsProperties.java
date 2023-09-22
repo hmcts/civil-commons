@@ -160,6 +160,9 @@ public class NotificationsProperties {
     private String applicantSolicitor1DefaultJudgmentReceived;
 
     @NotEmpty
+    private String applicantLiPDefaultJudgmentRequested;
+
+    @NotEmpty
     private String respondentSolicitor1DefaultJudgmentReceived;
 
     @NotEmpty
