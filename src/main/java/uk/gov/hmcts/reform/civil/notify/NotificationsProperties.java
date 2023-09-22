@@ -352,4 +352,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyDefendantLrTemplate;
+
+    @NotEmpty
+    private String respondentLrPartAdmitSettleClaimTemplate;
 }
