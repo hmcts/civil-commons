@@ -324,6 +324,9 @@ public class NotificationsProperties {
     private String respondent1LipClaimUpdatedTemplate;
 
     @NotEmpty
+    private String claimantLipClaimUpdatedTemplate;
+
+    @NotEmpty
     private String hearingFeeUnpaidNoc;
 
     @NotEmpty
@@ -346,5 +349,11 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String hearingNotificationLipDefendantTemplate;
+
+    @NotEmpty
+    private String notifyLiPClaimantDefendantResponded;
+
+    @NotEmpty
+    private String notifyLiPClaimantDefendantChangedContactDetails;
 
 }
