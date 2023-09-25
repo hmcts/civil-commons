@@ -83,4 +83,23 @@ class FeatureToggleApiTest {
         assertThat(ImmutableList.copyOf(capturedLdUser.getCustomAttributes())).extracting("name")
             .containsOnlyOnceElementsOf(customAttributesKeys);
     }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void shouldReturnCorrectState_whenUserWithLocationIsProvided(Boolean toggleState) {
+        LDUser ldUSer = new LDUser.Builder("civil-service")
+            .custom("timestamp", String.valueOf(System.currentTimeMillis()))
+            .custom("environment", FAKE_ENVIRONMENT)
+            .custom("location", "000000")
+            .build();
+        givenToggle(FAKE_FEATURE, toggleState);
+
+        assertThat(featureToggleApi.isFeatureEnabled(FAKE_FEATURE, ldUSer)).isEqualTo(toggleState);
+
+        verify(ldClient).boolVariation(
+            FAKE_FEATURE,
+            ldUSer,
+            false
+        );
+    }
 }
