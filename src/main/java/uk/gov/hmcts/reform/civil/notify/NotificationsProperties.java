@@ -358,8 +358,8 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyEnteredBreathingSpaceForDefendantLip;
-	
-	@NotEmpty
+
+    @NotEmpty
     private String notifyDefendantLrTemplate;
 
     @NotEmpty
