@@ -361,4 +361,10 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyEnteredBreathingSpaceForDefendantLip;
+
+    @NotEmpty
+    private String notifyDefendantLrTemplate;
+
+    @NotEmpty
+    private String respondentLrPartAdmitSettleClaimTemplate;
 }
