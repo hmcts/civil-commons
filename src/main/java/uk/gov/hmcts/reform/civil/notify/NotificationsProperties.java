@@ -154,6 +154,9 @@ public class NotificationsProperties {
     private String applicantSolicitor1DefaultJudgmentReceived;
 
     @NotEmpty
+    private String applicantLiPDefaultJudgmentRequested;
+
+    @NotEmpty
     private String respondentSolicitor1DefaultJudgmentReceived;
 
     @NotEmpty
@@ -343,11 +346,25 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String hearingNotificationLipDefendantTemplate;
-
+    
+    @NotEmpty
+    private String notifyLiPClaimantClaimSubmittedAndPayClaimFeeTemplate;
+    
     @NotEmpty
     private String notifyLiPClaimantDefendantResponded;
 
     @NotEmpty
     private String notifyLiPClaimantDefendantChangedContactDetails;
 
+    @NotEmpty
+    private String notifyApplicant1EnteredBreathingSpaceLip;
+
+    @NotEmpty
+    private String notifyEnteredBreathingSpaceForDefendantLip;
+
+    @NotEmpty
+    private String notifyDefendantLrTemplate;
+
+    @NotEmpty
+    private String respondentLrPartAdmitSettleClaimTemplate;
 }
