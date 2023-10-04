@@ -148,13 +148,7 @@ public class NotificationsProperties {
     private String claimantSolicitorConfirmsToProceedSpec;
 
     @NotEmpty
-    private String claimantSolicitorConfirmsToProceedSpec1v1;
-
-    @NotEmpty
     private String respondentSolicitorNotifyToProceedSpec;
-
-    @NotEmpty
-    private String respondentSolicitorNotifyToProceedSpec1v1;
 
     @NotEmpty
     private String applicantSolicitor1DefaultJudgmentReceived;
