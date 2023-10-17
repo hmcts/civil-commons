@@ -11,6 +11,7 @@
     <notes>False positive. We don't have any reference to json-java_project:json-java
       nor any reference to hutool:hutool:5.8.10. Suppressed long-term to re-assess and possibly delete.</notes>
     <cve>CVE-2022-45688</cve>
+    <cve>CVE-2023-5072</cve>
   </suppress>
   <suppress>
     <cve>CVE-2020-8908</cve>
