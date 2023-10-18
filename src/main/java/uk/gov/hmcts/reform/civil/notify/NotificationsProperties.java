@@ -373,4 +373,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyLiPRespondentBreathingSpaceLifted;
+
+    @NotEmpty
+    private String claimantLipDeadlineExtension;
 }
