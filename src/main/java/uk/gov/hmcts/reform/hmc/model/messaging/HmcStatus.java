@@ -10,5 +10,7 @@ public enum HmcStatus {
     CANCELLATION_SUBMITTED,
     CANCELLED,
     CLOSED,
-    EXCEPTION
+    EXCEPTION,
+    COMPLETED,
+    ADJOURNED
 }
