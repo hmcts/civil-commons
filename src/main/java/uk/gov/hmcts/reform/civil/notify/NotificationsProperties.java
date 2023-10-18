@@ -370,4 +370,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String respondentLrPartAdmitSettleClaimTemplate;
+
+    @NotEmpty
+    private String claimantLipDeadlineExtension;
 }
