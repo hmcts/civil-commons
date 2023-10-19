@@ -52,4 +52,8 @@ public class FeatureToggleApi {
             log.error("Error in closing the Launchdarkly client::", e);
         }
     }
+
+    public boolean isFeatureEnabledForLocation(String feature, String location, boolean defaultValue) {
+        return internalClient.boolVariation(feature, createLDUser().custom("location", location).build(), defaultValue);
+    }
 }
