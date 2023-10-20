@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import uk.gov.hmcts.reform.civil.enums.CaseRole;
 
 import java.time.LocalDateTime;
 
@@ -19,7 +18,6 @@ public class CaseDocument {
     private final long documentSize;
     private final LocalDateTime createdDatetime;
     private final String createdBy;
-    private final CaseRole ownedBy;
 
     @JsonIgnore
     public static CaseDocument toCaseDocument(Document document, DocumentType documentType) {
