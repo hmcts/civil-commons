@@ -354,9 +354,26 @@ public class NotificationsProperties {
     private String hearingNotificationLipDefendantTemplate;
 
     @NotEmpty
+    private String notifyLiPClaimantClaimSubmittedAndPayClaimFeeTemplate;
+
+    @NotEmpty
     private String notifyLiPClaimantDefendantResponded;
 
     @NotEmpty
     private String notifyLiPClaimantDefendantChangedContactDetails;
 
+    @NotEmpty
+    private String notifyApplicant1EnteredBreathingSpaceLip;
+
+    @NotEmpty
+    private String notifyEnteredBreathingSpaceForDefendantLip;
+
+    @NotEmpty
+    private String notifyDefendantLrTemplate;
+
+    @NotEmpty
+    private String respondentLrPartAdmitSettleClaimTemplate;
+
+    @NotEmpty
+    private String claimantLipDeadlineExtension;
 }
