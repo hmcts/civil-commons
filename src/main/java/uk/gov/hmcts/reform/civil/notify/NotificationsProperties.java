@@ -369,6 +369,12 @@ public class NotificationsProperties {
     private String respondentLrPartAdmitSettleClaimTemplate;
 
     @NotEmpty
+    private String notifyLiPApplicantBreathingSpaceLifted;
+
+    @NotEmpty
+    private String notifyLiPRespondentBreathingSpaceLifted;
+
+    @NotEmpty
     private String claimantLipDeadlineExtension;
 
     @NotEmpty
