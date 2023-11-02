@@ -366,6 +366,9 @@ public class NotificationsProperties {
     private String notifyApplicant1EnteredBreathingSpaceLip;
 
     @NotEmpty
+    private String notifyLiPClaimantClaimSubmittedAndHelpWithFeeTemplate;
+
+    @NotEmpty
     private String notifyEnteredBreathingSpaceForDefendantLip;
 
     @NotEmpty
