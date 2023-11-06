@@ -127,6 +127,12 @@ public class NotificationsProperties {
     private String sdoOrderedSpec;
 
     @NotEmpty
+    private String sdoOrderedEA;
+
+    @NotEmpty
+    private String sdoOrderedSpecEA;
+
+    @NotEmpty
     private String sdoOrderedSpecBilingual;
 
     @NotEmpty
@@ -373,6 +379,12 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String respondentLrPartAdmitSettleClaimTemplate;
+
+    @NotEmpty
+    private String notifyLiPApplicantBreathingSpaceLifted;
+
+    @NotEmpty
+    private String notifyLiPRespondentBreathingSpaceLifted;
 
     @NotEmpty
     private String claimantLipDeadlineExtension;
