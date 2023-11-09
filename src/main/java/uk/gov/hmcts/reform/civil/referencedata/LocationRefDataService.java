@@ -58,6 +58,28 @@ public class LocationRefDataService {
         return LocationRefData.builder().build();
     }
 
+    public LocationRefData getCourtLocationsForSearch(String authToken, String siteName) {
+        try {
+            ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
+                buildUriForCourtSearch(siteName),
+                HttpMethod.GET,
+                getHeaders(authToken),
+                new ParameterizedTypeReference<List<LocationRefData>>() {
+                }
+            );
+            List<LocationRefData> siteLocations = responseEntity.getBody();
+            if (siteLocations == null || siteLocations.isEmpty()) {
+                log.warn("Location Reference Data Lookup did not return any site location");
+                return LocationRefData.builder().build();
+            } else {
+                return siteLocations.get(0);
+            }
+        } catch (Exception e) {
+            log.error("Location Reference Data Lookup Failed - " + e.getMessage(), e);
+        }
+        return LocationRefData.builder().build();
+    }
+
     public List<LocationRefData> getCourtLocationsForDefaultJudgments(String authToken) {
         try {
             ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
@@ -130,6 +152,13 @@ public class LocationRefDataService {
             .queryParam("is_case_management_location", "Y")
             .queryParam("court_type_id", "10")
             .queryParam("location_type", "Court");
+        return builder.buildAndExpand(new HashMap<>()).toUri();
+    }
+
+    private URI buildUriForCourtSearch(String siteName) {
+        String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
+            .queryParam("court_venue_name", siteName);
         return builder.buildAndExpand(new HashMap<>()).toUri();
     }
 
