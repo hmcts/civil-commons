@@ -118,6 +118,9 @@ public class NotificationsProperties {
     private String respondentSolicitorDefendantResponseForSpec;
 
     @NotEmpty
+    private String respondentSolicitorDefResponseSpecWithClaimantAction;
+
+    @NotEmpty
     private String respondentDefendantResponseForSpec;
 
     @NotEmpty
@@ -125,6 +128,12 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String sdoOrderedSpec;
+
+    @NotEmpty
+    private String sdoOrderedEA;
+
+    @NotEmpty
+    private String sdoOrderedSpecEA;
 
     @NotEmpty
     private String sdoOrderedSpecBilingual;
@@ -148,7 +157,13 @@ public class NotificationsProperties {
     private String claimantSolicitorConfirmsToProceedSpec;
 
     @NotEmpty
+    private String claimantSolicitorConfirmsToProceedSpecWithAction;
+
+    @NotEmpty
     private String respondentSolicitorNotifyToProceedSpec;
+
+    @NotEmpty
+    private String respondentSolicitorNotifyToProceedSpecWithAction;
 
     @NotEmpty
     private String applicantSolicitor1DefaultJudgmentReceived;
@@ -367,6 +382,12 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String respondentLrPartAdmitSettleClaimTemplate;
+
+    @NotEmpty
+    private String notifyLiPApplicantBreathingSpaceLifted;
+
+    @NotEmpty
+    private String notifyLiPRespondentBreathingSpaceLifted;
 
     @NotEmpty
     private String claimantLipDeadlineExtension;
