@@ -36,7 +36,7 @@ public class LocationRefDataService {
 
     public LocationRefData getCtscLocation(String authToken, Boolean isSpec) {
         try {
-            String courtName = isSpec ? "Stoke CTSC" : "Salford CTSC";
+            String courtName = isSpec ? "Stoke CTSC" : "Level 4 Metro";
             ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
                 buildURIforCtsc(courtName),
                 HttpMethod.GET,
