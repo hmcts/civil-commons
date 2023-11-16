@@ -36,7 +36,7 @@ public class LocationRefDataService {
 
     public LocationRefData getCtscLocation(String authToken, Boolean isSpec) {
         try {
-            String courtName = isSpec ? "Stoke CTSC" : "Level 4 Metro";
+            String courtName = isSpec ? "Stoke CTSC" : "Salford CTSC";
             ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
                 buildURIforCtsc(courtName),
                 HttpMethod.GET,
@@ -170,7 +170,7 @@ public class LocationRefDataService {
     private URI buildURIforCtsc(String courtName) {
         String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
-            .queryParam("court_name", courtName);
+            .queryParam("court_venue_name", courtName);
         return builder.buildAndExpand(new HashMap<>()).toUri();
     }
 
