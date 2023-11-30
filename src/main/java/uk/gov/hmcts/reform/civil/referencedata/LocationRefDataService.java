@@ -151,8 +151,8 @@ public class LocationRefDataService {
     }
 
     /**
-     * Returns the list of locations that can then be added in dynamic list on the Judge Assisted order screen
-     * @param authToken
+     * Returns the list of locations that can then be added in dynamic list on the Judge Assisted order screen.
+     * @param authToken BEARER_TOKEN from CallbackParams
      * @return List of Hearing court Locations for Judge Assisted Final Order
      */
     public List<LocationRefData> getHearingCourtLocationsForJudgeFinalOrder(String authToken) {
