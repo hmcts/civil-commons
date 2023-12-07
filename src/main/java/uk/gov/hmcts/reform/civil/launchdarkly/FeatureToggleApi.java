@@ -56,4 +56,8 @@ public class FeatureToggleApi {
     public boolean isFeatureEnabledForLocation(String feature, String location, boolean defaultValue) {
         return internalClient.boolVariation(feature, createLDUser().custom("location", location).build(), defaultValue);
     }
+
+    public boolean isFeatureEnabledForDate(String feature, Long date, boolean defaultValue) {
+        return internalClient.boolVariation(feature, createLDUser().custom("timestamp", date).build(), defaultValue);
+    }
 }
