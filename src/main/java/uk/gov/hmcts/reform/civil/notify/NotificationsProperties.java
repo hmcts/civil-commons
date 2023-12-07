@@ -403,4 +403,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyRespondentLipRequestJudgementByAdmissionNotificationTemplate;
+
+    @NotEmpty
+    private String notifyClaimantAfterClaimIssue;
 }
