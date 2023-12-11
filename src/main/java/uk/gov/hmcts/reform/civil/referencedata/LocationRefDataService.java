@@ -150,6 +150,36 @@ public class LocationRefDataService {
         return builder.buildAndExpand(new HashMap<>()).toUri();
     }
 
+    /**
+     * Returns the list of locations that can then be added in dynamic list on the Judge Assisted order screen.
+     * @param authToken BEARER_TOKEN from CallbackParams
+     * @return List of Hearing court Locations for Judge Assisted Final Order
+     */
+    public List<LocationRefData> getHearingCourtLocationsForJudgeFinalOrder(String authToken) {
+        try {
+            ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
+                buildURIForHearingList(),
+                HttpMethod.GET,
+                getHeaders(authToken),
+                new ParameterizedTypeReference<>() {
+                }
+            );
+            return responseEntity.getBody();
+        } catch (Exception e) {
+            log.error("Location Reference Data Lookup Failed - " + e.getMessage(), e);
+        }
+        return new ArrayList<>();
+    }
+
+    private URI buildURIForHearingList() {
+        String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
+            .queryParam("is_hearing_location", "Y")
+            .queryParam("court_type_id", "10")
+            .queryParam("location_type", "Court");
+        return builder.buildAndExpand(new HashMap<>()).toUri();
+    }
+
     private URI buildURIforCourtLocation(String epimmsId) {
         String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
