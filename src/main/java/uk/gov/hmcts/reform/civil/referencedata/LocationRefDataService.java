@@ -151,11 +151,13 @@ public class LocationRefDataService {
     }
 
     /**
-     * Returns the list of locations that can then be added in dynamic list on the Judge Assisted order screen.
+     * Returns the list of locations that can then be added in dynamic list on the
+     * Judge Assisted order screen, SDO and Hearing Schedule Venue list.
+     *
      * @param authToken BEARER_TOKEN from CallbackParams
-     * @return List of Hearing court Locations for Judge Assisted Final Order
+     * @return List of Hearing court Locations / Venues
      */
-    public List<LocationRefData> getHearingCourtLocationsForJudgeFinalOrder(String authToken) {
+    public List<LocationRefData> getHearingCourtLocations(String authToken) {
         try {
             ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
                 buildURIForHearingList(),
@@ -214,7 +216,7 @@ public class LocationRefDataService {
             return Optional.empty();
         }
 
-        List<LocationRefData> locations = getCourtLocationsForDefaultJudgments(bearerToken);
+        List<LocationRefData> locations = getHearingCourtLocations(bearerToken);
         return locations.stream().filter(loc -> LocationRefDataService.getDisplayEntry(loc)
                 .equals(label))
             .findFirst();
