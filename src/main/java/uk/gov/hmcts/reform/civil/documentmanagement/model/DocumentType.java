@@ -18,6 +18,8 @@ public enum DocumentType {
     JUDGE_FINAL_ORDER,
     DEFENCE_TRANSLATED_DOCUMENT,
     DRAFT_CLAIM_FORM,
+    CLAIMANT_CLAIM_FORM,
+
     //General Application Document Type
     GENERAL_ORDER,
     DIRECTION_ORDER,
