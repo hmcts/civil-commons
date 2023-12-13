@@ -403,4 +403,16 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyRespondentLipRequestJudgementByAdmissionNotificationTemplate;
+
+    @NotEmpty
+    private  String notifyApplicantForSignedSettlementAgreement;
+
+    @NotEmpty
+    private  String notifyApplicantForNotAgreedSignSettlement;
+
+    @NotEmpty
+    private String notifyRespondentForSignedSettlementAgreement;
+
+    @NotEmpty
+    private String notifyRespondentForNotAgreedSignSettlement;
 }
