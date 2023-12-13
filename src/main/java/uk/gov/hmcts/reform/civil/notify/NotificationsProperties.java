@@ -360,6 +360,9 @@ public class NotificationsProperties {
     private String notifyLipUpdateTemplate;
 
     @NotEmpty
+    private String notifyUpdateTemplate;
+
+    @NotEmpty
     private String hearingNotificationLipDefendantTemplate;
 
     @NotEmpty
