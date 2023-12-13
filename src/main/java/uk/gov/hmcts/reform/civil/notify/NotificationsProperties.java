@@ -406,4 +406,19 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyClaimantLipHelpWithFees;
+
+    @NotEmpty
+    private String notifyClaimantAfterClaimIssue;
+  
+    @NotEmpty
+    private  String notifyApplicantForSignedSettlementAgreement;
+
+    @NotEmpty
+    private  String notifyApplicantForNotAgreedSignSettlement;
+
+    @NotEmpty
+    private String notifyRespondentForSignedSettlementAgreement;
+
+    @NotEmpty
+    private String notifyRespondentForNotAgreedSignSettlement;
 }
