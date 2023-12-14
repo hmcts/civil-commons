@@ -33,22 +33,15 @@
   <!--End of false positives section -->
 
   <!--Please add all the temporary suppression under the below section-->
-  <suppress until="2024-12-14">
-    <cve>CVE-2022-1471</cve>
-    <cve>CVE-2023-20873</cve>
+  <suppress until="2023-12-14">
     <cve>CVE-2023-20861</cve>
     <cve>CVE-2023-28708</cve>
     <cve>CVE-2023-20860</cve>
-    <cve>CVE-2023-20863</cve>
     <cve>CVE-2023-2976</cve>
     <cve>CVE-2023-20862</cve>
     <cve>CVE-2023-20883</cve>
-    <cve>CVE-2023-33201</cve>
-    <cve>CVE-2023-35116</cve>
     <cve>CVE-2023-41080</cve>
     <cve>CVE-2023-34040</cve>
-    <cve>CVE-2023-31582</cve>
-    <cve>CVE-2023-34055</cve>
   </suppress>
   <suppress until="2024-01-10">
     <cve>CVE-2023-33202</cve>
@@ -57,6 +50,38 @@
   <suppress until="2024-01-10">
     <notes>file name: cpe:2.3:a:qos:logback:*:*:*:*:*:*:*:*</notes>
     <cve>CVE-2023-6378</cve>
+  </suppress>
+  <suppress>
+    <notes>file name: cpe:2.3:a:bouncycastle:bouncy-castle-crypto-package:1.70</notes>
+    <cve>CVE-2023-33201</cve>
+  </suppress>
+  <suppress>
+    <notes>file name: cpe:2.3:a:pivotal_software:spring_security:5.7.7</notes>
+    <cve>CVE-2023-20862</cve>
+  </suppress>
+  <suppress>
+    <notes>file name: cpe:2.3:a:fasterxml:jackson-databind:2.13.5</notes>
+    <cve>CVE-2023-35116</cve>
+  </suppress>
+  <suppress>
+    <notes>file name: cpe:2.3:a:jose4j_project:jose4j:0.7.7</notes>
+    <cve>CVE-2023-31582</cve>
+  </suppress>
+  <suppress>
+    <notes>file name: cpe:2.3:a:snakeyaml_project:snakeyaml:1.33</notes>
+    <cve>CVE-2022-1471</cve>
+  </suppress>
+  <suppress>
+    <notes>package name: pkg:maven/org.springframework/spring-aop@5.3.25</notes>
+    <cve>CVE-2023-20860</cve>
+    <cve>CVE-2023-20861</cve>
+    <cve>CVE-2023-20863</cve>
+  </suppress>
+  <suppress>
+    <notes>package name: pkg:maven/org.springframework.boot/spring-boot@2.7.9</notes>
+    <cve>CVE-2023-20873</cve>
+    <cve>CVE-2023-20883</cve>
+    <cve>CVE-2023-34055</cve>
   </suppress>
   <!--End of temporary suppression section -->
 </suppressions>
