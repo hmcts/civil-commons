@@ -405,6 +405,9 @@ public class NotificationsProperties {
     private String notifyRespondentLipRequestJudgementByAdmissionNotificationTemplate;
 
     @NotEmpty
+    private String notifyClaimantAfterClaimIssue;
+  
+    @NotEmpty
     private  String notifyApplicantForSignedSettlementAgreement;
 
     @NotEmpty
@@ -415,4 +418,5 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyRespondentForNotAgreedSignSettlement;
+
 }
