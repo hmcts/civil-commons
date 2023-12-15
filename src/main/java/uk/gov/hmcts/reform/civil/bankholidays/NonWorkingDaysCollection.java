@@ -28,6 +28,7 @@ public class NonWorkingDaysCollection {
         } catch (IllegalStateException e) {
             // thrown from ResourceReader#readString
             return false;
+            
         }
     }
 }
