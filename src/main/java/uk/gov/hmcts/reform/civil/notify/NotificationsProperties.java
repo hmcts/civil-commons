@@ -424,4 +424,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyRespondentLipForClaimantRepresentedTemplate;
+
+    @NotEmpty
+    private String notifyClaimantLipForNoLongerAccessTemplate;
 }
