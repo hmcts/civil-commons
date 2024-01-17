@@ -83,5 +83,10 @@
     <cve>CVE-2023-20883</cve>
     <cve>CVE-2023-34055</cve>
   </suppress>
+  <suppress until="2024-04-04">
+    <cve>CVE-2023-33202</cve>
+    <cve>CVE-2023-46589</cve>
+    <cve>CVE-2023-6378</cve>
+  </suppress>
   <!--End of temporary suppression section -->
 </suppressions>
