@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.civil.bankholidays;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.civil.helpers.ResourceReader;
@@ -9,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
+@Slf4j
 @Service
 public class NonWorkingDaysCollection {
 
@@ -22,6 +24,7 @@ public class NonWorkingDaysCollection {
         final String isoDate = date.format(DateTimeFormatter.ISO_LOCAL_DATE);
         try {
             String data = ResourceReader.readString(dataResource);
+            log.info("Non working day: {}", data);
             return Arrays.stream(data.split("[\r\n]+"))
                 .map(String::trim)
                 .anyMatch(Predicate.isEqual(isoDate));
