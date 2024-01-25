@@ -24,7 +24,7 @@ public class NonWorkingDaysCollection {
         final String isoDate = date.format(DateTimeFormatter.ISO_LOCAL_DATE);
         try {
             String data = ResourceReader.readString(dataResource);
-            log.info("Non working day: {}", data);
+            log.info("Non working day list: {}", data);
             return Arrays.stream(data.split("[\r\n]+"))
                 .map(String::trim)
                 .anyMatch(Predicate.isEqual(isoDate));
