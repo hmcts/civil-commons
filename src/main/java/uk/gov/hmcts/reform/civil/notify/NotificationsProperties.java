@@ -434,6 +434,6 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyClaimantLiPTranslatedDocumentUploadedWhenClaimIssuedInBilingual;
 
-     @NotEmpty
+    @NotEmpty
     private String notifyClaimantLiPTranslatedDocumentUploadedWhenClaimIssuedInEnglish;
 }
