@@ -430,4 +430,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyClaimantLipForNoLongerAccessTemplate;
+
+    @NotEmpty
+    private String bilingualClaimantClaimContinuingOnlineForSpec;
 }
