@@ -436,4 +436,14 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyClaimantLiPTranslatedDocumentUploadedWhenClaimIssuedInEnglish;
+
+    @NotEmpty
+    private String notifyClaimantLipForClaimSubmissionTemplate;
+
+    @NotEmpty
+    private String notifyLiPClaimantClaimSubmittedAndPayClaimFeeBilingualTemplate;
+
+    @NotEmpty
+    private String notifyLiPClaimantClaimSubmittedAndHelpWithFeeBilingualTemplate;
+
 }
