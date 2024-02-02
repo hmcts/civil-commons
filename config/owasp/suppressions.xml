@@ -89,4 +89,8 @@
     <cve>CVE-2023-6378</cve>
   </suppress>
   <!--End of temporary suppression section -->
+
+  <suppress until="2024-02-6">
+    <cve>CVE-2023-31582</cve>
+  </suppress>
 </suppressions>
