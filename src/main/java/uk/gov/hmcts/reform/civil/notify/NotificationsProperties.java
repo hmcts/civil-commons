@@ -441,6 +441,6 @@ public class NotificationsProperties {
     private String notifyLiPClaimantClaimSubmittedAndHelpWithFeeBilingualTemplate;
 
     @NotEmpty
-    private String notifyLiPClaimantTranslatedClaimantIntentionUploadedTemplate;
+    private String claimantLipClaimUpdatedBilingualTemplate;
 
 }
