@@ -435,6 +435,12 @@ public class NotificationsProperties {
     private String notifyClaimantLipForNoLongerAccessWelshTemplate;
 
     @NotEmpty
+    private String notifyClaimantLiPTranslatedDocumentUploadedWhenClaimIssuedInBilingual;
+
+    @NotEmpty
+    private String notifyClaimantLiPTranslatedDocumentUploadedWhenClaimIssuedInEnglish;
+
+    @NotEmpty
     private String notifyClaimantLipForClaimSubmissionTemplate;
 
     @NotEmpty
