@@ -449,4 +449,10 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyLiPClaimantClaimSubmittedAndHelpWithFeeBilingualTemplate;
 
+    @NotEmpty
+    private String claimantLipClaimUpdatedBilingualTemplate;
+
+    @NotEmpty
+    private String bilingualClaimantClaimContinuingOnlineForSpec;
+
 }
