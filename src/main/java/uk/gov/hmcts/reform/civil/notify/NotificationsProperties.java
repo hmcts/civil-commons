@@ -446,4 +446,9 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyLiPClaimantClaimSubmittedAndHelpWithFeeBilingualTemplate;
 
+    @NotEmpty
+    private String notifyApplicantLipForSignedSettlementAgreementInBilingual;
+
+    @NotEmpty
+    private String notifyApplicantLipForNotAgreedSignSettlementInBilingual;
 }
