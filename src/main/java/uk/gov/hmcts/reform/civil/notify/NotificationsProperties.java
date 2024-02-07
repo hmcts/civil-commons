@@ -453,6 +453,9 @@ public class NotificationsProperties {
     private String bilingualClaimantClaimContinuingOnlineForSpec;
 
     @NotEmpty
+    private String applicantLiPDefaultJudgmentRequestedBilingualTemplate;
+
+    @NotEmpty
     private String notifyApplicantLipForSignedSettlementAgreementInBilingual;
 
     @NotEmpty
