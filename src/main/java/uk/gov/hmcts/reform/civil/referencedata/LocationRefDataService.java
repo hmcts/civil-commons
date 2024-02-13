@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
+import uk.gov.hmcts.reform.civil.referencedata.exception.ReferenceDataLookupException;
 import uk.gov.hmcts.reform.civil.referencedata.model.LocationRefData;
 
 import java.net.URI;
@@ -32,6 +33,32 @@ public class LocationRefDataService {
     private final RestTemplate restTemplate;
     private final LRDConfiguration lrdConfiguration;
     private final AuthTokenGenerator authTokenGenerator;
+
+    public LocationRefData getCtscLocation(String authToken, Boolean isSpec) {
+        try {
+            String courtName = isSpec ? "Stoke CTSC" : "Salford CTSC";
+            ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
+                buildURIforCtsc(courtName),
+                HttpMethod.GET,
+                getHeaders(authToken),
+                new ParameterizedTypeReference<List<LocationRefData>>() {
+                }
+            );
+            List<LocationRefData> ctscLocations = responseEntity.getBody();
+            if (ctscLocations == null || ctscLocations.isEmpty()) {
+                log.warn("Location Reference Data Lookup did not return any CTSC location for %s", courtName);
+                return LocationRefData.builder().build();
+            } else {
+                if (ctscLocations.size() > 1) {
+                    log.warn("Location Reference Data Lookup returned more than one CTSC location for %s", courtName);
+                }
+                return ctscLocations.get(0);
+            }
+        } catch (Exception e) {
+            log.error("Location Reference Data Lookup Failed for CTSC - " + e.getMessage(), e);
+            throw new ReferenceDataLookupException(e);
+        }
+    }
 
     public LocationRefData getCcmccLocation(String authToken) {
         try {
@@ -54,8 +81,8 @@ public class LocationRefDataService {
             }
         } catch (Exception e) {
             log.error("Location Reference Data Lookup Failed - " + e.getMessage(), e);
+            throw new ReferenceDataLookupException(e);
         }
-        return LocationRefData.builder().build();
     }
 
     public List<LocationRefData> getCourtLocationsForDefaultJudgments(String authToken) {
@@ -137,6 +164,13 @@ public class LocationRefDataService {
         String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
             .queryParam("court_venue_name", "County Court Money Claims Centre");
+        return builder.buildAndExpand(new HashMap<>()).toUri();
+    }
+
+    private URI buildURIforCtsc(String courtName) {
+        String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
+            .queryParam("court_venue_name", courtName);
         return builder.buildAndExpand(new HashMap<>()).toUri();
     }
 
