@@ -470,4 +470,7 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyApplicantLipForNotAgreedSignSettlementInBilingual;
 
+    @NotEmpty
+    private String notifyApplicantForHwFMoreInformationNeeded;
+
 }
