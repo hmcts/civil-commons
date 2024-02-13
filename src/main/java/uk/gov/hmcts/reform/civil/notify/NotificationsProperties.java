@@ -315,6 +315,12 @@ public class NotificationsProperties {
     private String mediationUnsuccessfulClaimantLRTemplate;
 
     @NotEmpty
+    private String mediationUnsuccessfulLRTemplate;
+
+    @NotEmpty
+    private String mediationUnsuccessfulLIPTemplate;
+
+    @NotEmpty
     private String mediationUnsuccessfulDefendantLIPTemplate;
 
     @NotEmpty
@@ -430,4 +436,38 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyClaimantLipForNoLongerAccessTemplate;
+
+    @NotEmpty
+    private String notifyClaimantLipForNoLongerAccessWelshTemplate;
+
+    @NotEmpty
+    private String notifyClaimantLiPTranslatedDocumentUploadedWhenClaimIssuedInBilingual;
+
+    @NotEmpty
+    private String notifyClaimantLiPTranslatedDocumentUploadedWhenClaimIssuedInEnglish;
+
+    @NotEmpty
+    private String notifyClaimantLipForClaimSubmissionTemplate;
+
+    @NotEmpty
+    private String notifyLiPClaimantClaimSubmittedAndPayClaimFeeBilingualTemplate;
+
+    @NotEmpty
+    private String notifyLiPClaimantClaimSubmittedAndHelpWithFeeBilingualTemplate;
+
+    @NotEmpty
+    private String claimantLipClaimUpdatedBilingualTemplate;
+
+    @NotEmpty
+    private String bilingualClaimantClaimContinuingOnlineForSpec;
+
+    @NotEmpty
+    private String applicantLiPDefaultJudgmentRequestedBilingualTemplate;
+
+    @NotEmpty
+    private String notifyApplicantLipForSignedSettlementAgreementInBilingual;
+
+    @NotEmpty
+    private String notifyApplicantLipForNotAgreedSignSettlementInBilingual;
+
 }
