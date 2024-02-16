@@ -474,6 +474,6 @@ public class NotificationsProperties {
     private String notifyApplicantForHwFMoreInformationNeeded;
 
     @NotEmpty
-    private String notifyApplicantForHwFNoRemission;
+    private String notifyApplicantForHwfNoRemission;
 
 }
