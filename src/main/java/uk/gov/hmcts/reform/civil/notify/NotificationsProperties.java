@@ -473,4 +473,6 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyApplicantForHwFMoreInformationNeeded;
 
+    @NotEmpty
+    private String notifyApplicantForHwFPartialRemission;
 }
