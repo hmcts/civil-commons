@@ -360,7 +360,7 @@ public class NotificationsProperties {
     private String notifyDefendantLIPClaimantSettleTheClaimTemplate;
 
     @NotEmpty
-    private String  evidenceUploadLipTemplate;
+    private String evidenceUploadLipTemplate;
 
     @NotEmpty
     private String notifyLipUpdateTemplate;
@@ -420,10 +420,10 @@ public class NotificationsProperties {
     private String notifyClaimantAfterClaimIssue;
 
     @NotEmpty
-    private  String notifyApplicantForSignedSettlementAgreement;
+    private String notifyApplicantForSignedSettlementAgreement;
 
     @NotEmpty
-    private  String notifyApplicantForNotAgreedSignSettlement;
+    private String notifyApplicantForNotAgreedSignSettlement;
 
     @NotEmpty
     private String notifyRespondentForSignedSettlementAgreement;
@@ -472,6 +472,9 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyApplicantForHwFMoreInformationNeeded;
+
+    @NotEmpty
+    private String notifyApplicantForHwfNoRemission;
 
     @NotEmpty
     private String notifyApplicantForHwFPartialRemission;
