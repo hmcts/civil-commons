@@ -477,6 +477,9 @@ public class NotificationsProperties {
     private String notifyApplicantForHwfNoRemission;
 
     @NotEmpty
+    private String notifyApplicantForHwfNoRemissionWelsh;
+
+    @NotEmpty
     private String notifyApplicantForHwfUpdateRefNumber;
 
     @NotEmpty
