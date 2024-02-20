@@ -476,4 +476,10 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyApplicantForHwfNoRemission;
 
+    @NotEmpty
+    private String notifyApplicantForHwfUpdateRefNumber;
+
+    @NotEmpty
+    private String notifyApplicantForHwfPartialRemission;
+
 }
