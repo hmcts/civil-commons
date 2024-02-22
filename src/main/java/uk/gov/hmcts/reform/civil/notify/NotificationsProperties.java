@@ -488,4 +488,9 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyApplicantForHwfInvalidRefNumber;
 
+    @NotEmpty
+    private String notifyApplicantForHwfUpdateRefNumberBilingual;
+
+    @NotEmpty
+    private String notifyApplicantForHwfPartialRemissionBilingual;
 }
