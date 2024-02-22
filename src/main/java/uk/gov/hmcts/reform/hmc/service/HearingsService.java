@@ -32,20 +32,20 @@ public class HearingsService {
                 hearingId,
                 null);
         } catch (FeignException ex)  {
-            log.error("Failed to retrieve hearing with Id: {} from HMC", hearingId);
+            log.error("Failed to retrieve hearing with Hearing ID: {} from HMC with error: {}", hearingId, ex.getMessage());
             throw new HmcException(ex);
         }
     }
 
     public PartiesNotifiedResponses getPartiesNotifiedResponses(String authToken, String hearingId) {
-        log.debug("Requesting Get Parties Notified with Hearing ID {}", hearingId);
+        log.debug("Requesting Get Parties Notified with Hearing ID {} from HMC with error: {}", hearingId);
         try {
             return hearingNoticeApi.getPartiesNotifiedRequest(
                 authToken,
                 authTokenGenerator.generate(),
                 hearingId);
         } catch (FeignException e) {
-            log.error("Failed to retrieve patries notified with Id: %s from HMC", hearingId);
+            log.error("Failed to retrieve patries notified with Hearing ID: {} from HMC with error: {}", hearingId, e.getMessage());
             throw new HmcException(e);
         }
     }
@@ -63,7 +63,7 @@ public class HearingsService {
                 receivedDateTime
             );
         } catch (FeignException ex)  {
-            log.error("Failed to update partiesNotified with Id: {} from HMC", hearingId);
+            log.error("Failed to update partiesNotified with Hearing ID: {} with error: {}", hearingId, ex.getMessage());
             throw new HmcException(ex);
         }
     }
@@ -80,7 +80,6 @@ public class HearingsService {
                 hearingStartDateFrom,
                 hearingStartDateTo);
         } catch (FeignException e) {
-            log.error("Failed to retrieve unnotified hearings");
             throw new HmcException(e);
         }
     }
@@ -94,7 +93,6 @@ public class HearingsService {
                 caseId,
                 status);
         } catch (FeignException e) {
-            log.error("Failed to retrieve unnotified hearings");
             throw new HmcException(e);
         }
     }
