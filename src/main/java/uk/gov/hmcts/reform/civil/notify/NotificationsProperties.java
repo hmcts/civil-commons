@@ -496,4 +496,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyApplicantForHwfPartialRemissionBilingual;
+
+    @NotEmpty
+    private String notifyApplicantForHwfInvalidRefNumberBilingual;
 }
