@@ -499,4 +499,10 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyApplicantForHwfInvalidRefNumberBilingual;
+
+    @NotEmpty
+    private String notifyApplicantForHwfFeePaymentOutcome;
+
+    @NotEmpty
+    private String notifyApplicantForHwfFeePaymentOutcomeInBilingual;
 }
