@@ -476,4 +476,26 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyApplicantForHwFMoreInformationNeeded;
 
+    @NotEmpty
+    private String notifyApplicantForHwfNoRemission;
+
+    @NotEmpty
+    private String notifyApplicantForHwfNoRemissionWelsh;
+
+    @NotEmpty
+    private String notifyApplicantForHwfUpdateRefNumber;
+
+    @NotEmpty
+    private String notifyApplicantForHwfPartialRemission;
+
+    @NotEmpty
+    private String notifyApplicantForHwfInvalidRefNumber;
+
+    @NotEmpty
+    private String notifyApplicantForHwfFeePaymentOutcome;
+
+    @NotEmpty
+    private String notifyApplicantForHwfFeePaymentOutcomeInBilingual;
+    
+
 }
