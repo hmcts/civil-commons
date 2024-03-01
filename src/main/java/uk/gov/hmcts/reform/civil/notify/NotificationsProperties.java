@@ -477,6 +477,39 @@ public class NotificationsProperties {
     private String notifyApplicantForHwFMoreInformationNeeded;
 
     @NotEmpty
+    private String notifyApplicantForHwFMoreInformationNeededWelsh;
+
+    @NotEmpty
+    private String notifyApplicantForHwfNoRemission;
+
+    @NotEmpty
+    private String notifyApplicantForHwfNoRemissionWelsh;
+
+    @NotEmpty
+    private String notifyApplicantForHwfUpdateRefNumber;
+
+    @NotEmpty
+    private String notifyApplicantForHwfPartialRemission;
+
+    @NotEmpty
+    private String notifyApplicantForHwfInvalidRefNumber;
+
+    @NotEmpty
+    private String notifyApplicantForHwfUpdateRefNumberBilingual;
+
+    @NotEmpty
+    private String notifyApplicantForHwfPartialRemissionBilingual;
+
+    @NotEmpty
+    private String notifyApplicantForHwfInvalidRefNumberBilingual;
+
+    @NotEmpty
+    private String notifyApplicantForHwfFeePaymentOutcome;
+
+    @NotEmpty
+    private String notifyApplicantForHwfFeePaymentOutcomeInBilingual;
+
+    @NotEmpty
     private String notifyApplicantLRMediationTemplate;
 
 }
