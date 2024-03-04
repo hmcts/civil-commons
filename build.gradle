@@ -150,7 +150,10 @@ ext.libraries = [
 
 dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web',
+  {
+    exclude group: 'org.bitbucket.b_c:jose4j', module: 'jose4j'
+  }
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-cache'
