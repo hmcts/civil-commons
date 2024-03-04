@@ -4,7 +4,7 @@ bankHolidays:
     url: https://www.gov.uk
 
 nonworking-days:
-  datafile: /data/non-working_days.dat
+  datafile: /data/non-working_days.txt
 
 # Postcode Lookup Service
 os-postcode-lookup:
