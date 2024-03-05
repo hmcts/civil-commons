@@ -545,7 +545,4 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyLipVLipDefendantSuccessfulMediation;
 
-
-
-
 }
