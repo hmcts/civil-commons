@@ -508,4 +508,44 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyApplicantForHwfFeePaymentOutcomeInBilingual;
+
+    @NotEmpty
+    private String notifyLrVLrClaimantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrVLrDefendantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrVLrTwoVOneClaimantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrVLrTwoVOneDefendantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrVLrOneVTwoSameSolicitorClaimantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrVLrOneVTwoSameSolicitorDefendantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrVLrOneVTwoDifferentSolicitorsClaimantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrVLrOneVTwoDifferentSolicitorsDefendantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrVLipClaimantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrVLipDefendantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLipVLipClaimantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLipVLipDefendantSuccessfulMediation;
+
+
+
+
 }
