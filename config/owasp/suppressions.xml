@@ -68,10 +68,6 @@
     <cve>CVE-2023-31582</cve>
   </suppress>
   <suppress>
-    <notes>file name: cpe:2.3:a:jose4j_project:jose4j:0.7.7</notes>
-    <cve>CVE-2023-51775</cve>
-  </suppress>
-  <suppress>
     <notes>file name: cpe:2.3:a:snakeyaml_project:snakeyaml:1.33</notes>
     <cve>CVE-2022-1471</cve>
   </suppress>
