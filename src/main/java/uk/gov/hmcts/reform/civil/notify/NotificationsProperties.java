@@ -508,4 +508,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyApplicantForHwfFeePaymentOutcomeInBilingual;
+
+    @NotEmpty
+    private String notifyDefendantLRForMediation;
 }
