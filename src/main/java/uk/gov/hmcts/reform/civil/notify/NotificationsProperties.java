@@ -511,4 +511,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyDefendantLRForMediation;
+
+    @NotEmpty
+    private String notifyApplicantLRMediationTemplate;
 }
