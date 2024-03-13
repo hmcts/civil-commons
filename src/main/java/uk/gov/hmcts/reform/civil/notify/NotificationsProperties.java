@@ -510,6 +510,12 @@ public class NotificationsProperties {
     private String notifyApplicantForHwfFeePaymentOutcomeInBilingual;
 
     @NotEmpty
+    private String notifyDefendantLRForMediation;
+
+    @NotEmpty
+    private String notifyApplicantLRMediationTemplate;
+
+    @NotEmpty
     private String notifyLrClaimantSuccessfulMediation;
 
     @NotEmpty
@@ -526,7 +532,4 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyLipDefendantSuccessfulMediation;
-
-
-
 }
