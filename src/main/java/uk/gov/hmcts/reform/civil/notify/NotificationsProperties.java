@@ -522,7 +522,7 @@ public class NotificationsProperties {
     private String notifyOneVTwoClaimantSuccessfulMediation;
 
     @NotEmpty
-    private String notifyLipClaimantSuccessfulMediation;
+    private String notifyLipSuccessfulMediation;
 
     @NotEmpty
     private String notifyLrDefendantSuccessfulMediation;
@@ -530,6 +530,4 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyTwoVOneDefendantSuccessfulMediation;
 
-    @NotEmpty
-    private String notifyLipDefendantSuccessfulMediation;
 }
