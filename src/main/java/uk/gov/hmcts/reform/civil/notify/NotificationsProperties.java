@@ -514,4 +514,10 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyApplicantLRMediationTemplate;
+
+    @NotEmpty
+    private String notifyClaimantJudgmentVariedDeterminationOfMeansTemplate;
+
+    @NotEmpty
+    private String notifyDefendantJudgmentVariedDeterminationOfMeansTemplate;
 }
