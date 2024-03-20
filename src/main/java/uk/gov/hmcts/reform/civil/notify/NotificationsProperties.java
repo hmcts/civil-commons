@@ -516,8 +516,8 @@ public class NotificationsProperties {
     private String notifyApplicantLRMediationTemplate;
 
     @NotEmpty
-    private String notifyClaimantJudgementVariedDeterminationOfMeansTemplate;
+    private String notifyClaimantJudgmentVariedDeterminationOfMeansTemplate;
 
     @NotEmpty
-    private String notifyDefendantJudgementVariedDeterminationOfMeansTemplate;
+    private String notifyDefendantJudgmentVariedDeterminationOfMeansTemplate;
 }
