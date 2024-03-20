@@ -372,7 +372,7 @@ public class NotificationsProperties {
     private String notifyUpdateTemplate;
 
     @NotEmpty
-    private String notifySetAsideJudgementTemplate;
+    private String notifySetAsideJudgmentTemplate;
 
     @NotEmpty
     private String hearingNotificationLipDefendantTemplate;
