@@ -536,4 +536,6 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyDefendantJudgmentVariedDeterminationOfMeansTemplate;
 
+    @NotEmpty
+    private String notifyLrRecordJudgmentDeterminationMeansTemplate;
 }
