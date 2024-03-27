@@ -518,7 +518,6 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifySetAsideJudgmentTemplate;
 
-
     @NotEmpty
     private String notifyLrClaimantSuccessfulMediation;
 
