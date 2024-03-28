@@ -534,5 +534,11 @@ public class NotificationsProperties {
     private String notifyTwoVOneDefendantSuccessfulMediation;
 
     @NotEmpty
+    private String notifyClaimantJudgmentVariedDeterminationOfMeansTemplate;
+
+    @NotEmpty
+    private String notifyDefendantJudgmentVariedDeterminationOfMeansTemplate;
+
+    @NotEmpty
     private String notifyLrRecordJudgmentDeterminationMeansTemplate;
 }
