@@ -541,4 +541,13 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyLrRecordJudgmentDeterminationMeansTemplate;
+
+    @NotEmpty
+    private String notifyClaimantLipForDefendantRepresentedTemplate;
+
+    @NotEmpty
+    private String notifyDefendantLipForNoLongerAccessTemplate;
+
+    @NotEmpty
+    private String notifyDefendantLrAfterNoticeOfChangeTemplate;
 }
