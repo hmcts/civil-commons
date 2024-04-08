@@ -29,7 +29,13 @@ public class NotificationService {
                 parameters,
                 reference
             );
-            log.info("Email Response body:: {} reference {}", sendEmailResponse.getBody(), sendEmailResponse.getReference());
+            if (sendEmailResponse != null) {
+                log.info(
+                    "Email Response body:: {} reference {}",
+                    sendEmailResponse.getBody(),
+                    sendEmailResponse.getReference()
+                );
+            }
         } catch (NotificationClientException e) {
             log.info("Notification Service error {}", e.getMessage());
             throw new NotificationException(e);
