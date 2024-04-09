@@ -556,4 +556,11 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyDefendantLrAfterNoticeOfChangeTemplate;
+
+    @NotEmpty
+    private String notifyClaimantLipBilingualAfterDefendantNOC;
+
+    @NotEmpty
+    private String notifyDefendantLipBilingualAfterDefendantNOC;
+
 }
