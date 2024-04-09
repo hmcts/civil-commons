@@ -31,7 +31,8 @@ public class NotificationService {
             );
             if (sendEmailResponse != null) {
                 log.info(
-                    "Email Response body:: {} reference {}",
+                    "Target email: {} Email Response body: {} reference: {}",
+                    targetEmail,
                     sendEmailResponse.getBody(),
                     sendEmailResponse.getReference()
                 );
