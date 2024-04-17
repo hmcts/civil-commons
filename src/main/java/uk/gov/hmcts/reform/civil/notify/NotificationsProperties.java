@@ -549,6 +549,9 @@ public class NotificationsProperties {
     private String notifyLrRecordJudgmentDeterminationMeansTemplate;
 
     @NotEmpty
+    private String noticeOfChangeApplicantLipSolicitorTemplate;
+
+    @NotEmpty
     private String notifyClaimantLipForDefendantRepresentedTemplate;
 
     @NotEmpty

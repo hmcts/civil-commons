@@ -54,6 +54,9 @@
   <suppress>
     <notes>file name: cpe:2.3:a:bouncycastle:bouncy-castle-crypto-package:1.70</notes>
     <cve>CVE-2023-33201</cve>
+    <cve>CVE-2024-29857</cve>
+    <cve>CVE-2024-30171</cve>
+    <cve>CVE-2024-30172</cve>
   </suppress>
   <suppress>
     <notes>file name: cpe:2.3:a:pivotal_software:spring_security:5.7.7</notes>
