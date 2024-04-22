@@ -171,9 +171,9 @@ dependencies {
   implementation group: 'com.github.hmcts', name: 'ccd-client', version: '4.9.1'
 
   implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
-  implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.14.0'
+  implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 
-  implementation group: 'uk.gov.service.notify', name: 'notifications-java-client', version: '5.0.0-RELEASE'
+  implementation group: 'uk.gov.service.notify', name: 'notifications-java-client', version: '3.19.1-RELEASE'
   implementation group: 'uk.gov.hmcts.reform', name: 'service-auth-provider-client', version: '4.0.0'
   implementation group: 'uk.gov.hmcts.reform', name: 'idam-client', version: '2.0.0'
   implementation group: 'uk.gov.hmcts.reform', name: 'send-letter-client', version: '3.0.3'
