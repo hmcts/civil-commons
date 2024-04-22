@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
   <!--Please add all the false positives under the below section-->
-
   <suppress>
     <notes>False Positives
       CVE-2016-1000027 - https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-579669626
@@ -23,5 +22,9 @@
     <cve>CVE-2024-30171</cve>
     <cve>CVE-2024-29857</cve>
     <cve>CVE-2024-22243</cve>
+    <cve>CVE-2023-51775</cve>
+    <cve>CVE-2022-45688</cve>
+    <cve>CVE-2023-5072</cve>
+    <cve>CVE-2024-22262</cve>
   </suppress>
 </suppressions>

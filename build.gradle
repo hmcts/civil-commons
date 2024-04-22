@@ -90,6 +90,9 @@ dependencyManagement {
     // Solves CVE-2023-24998
     dependency group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
 
+    //Solves CVE-2022-45688, CVE-2023-5072
+
+
     //Solves CVE-2023-35116
     dependencySet(group: 'com.fasterxml.jackson.core', version: '2.16.0') {
       entry 'jackson-databind'
