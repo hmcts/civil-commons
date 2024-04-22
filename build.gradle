@@ -86,8 +86,7 @@ dependencyUpdates {
 
 dependencyManagement {
   dependencies {
-    //Solves CVE-2020-5408
-    dependency group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.8.7'
+
     // Solves CVE-2023-24998
     dependency group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
 
@@ -99,7 +98,7 @@ dependencyManagement {
     }
 
     //Solves CVE-2023-6378
-    dependencySet(group: 'ch.qos.logback', version: '1.4.14') {
+    dependencySet(group: 'ch.qos.logback', version: '1.2.13') {
       entry 'logback-classic'
       entry 'logback-core'
     }

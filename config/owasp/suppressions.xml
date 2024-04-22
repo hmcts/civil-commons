@@ -10,5 +10,13 @@
     </notes>
     <cve>CVE-2016-1000027</cve>
   </suppress>
+  <suppress until="2030-01-01">
+  <notes><![CDATA[
+                incorrectly tagging spring-security-crypto, Affects versions prior to 5.3.2
+                ]]>
+  </notes>
+  <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.+?$</packageUrl>
+  <cve>CVE-2020-5408</cve>
+  </suppress>
   <!--End of temporary suppression section -->
 </suppressions>
