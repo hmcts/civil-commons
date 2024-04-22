@@ -3,6 +3,7 @@
   <!--Please add all the false positives under the below section-->
   <suppress until="2024-10-22">
     <cve>CVE-2023-33202</cve>
+    <cve>CVE-2023-33201</cve>
   </suppress>
   <suppress>
     <notes>False Positives
