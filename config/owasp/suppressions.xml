@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
   <!--Please add all the false positives under the below section-->
+  <suppress until="2024-10-22">
+    <cve>CVE-2023-33202</cve>
+  </suppress>
+  <suppress>
+    <notes>False Positives
+      CVE-2016-1000027 - https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-579669626
+    </notes>
+    <cve>CVE-2016-1000027</cve>
+  </suppress>
   <!--End of temporary suppression section -->
 </suppressions>
