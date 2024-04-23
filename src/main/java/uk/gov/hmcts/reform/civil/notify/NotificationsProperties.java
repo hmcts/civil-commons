@@ -550,4 +550,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String noticeOfChangeApplicantLipSolicitorTemplate;
+
+    @NotEmpty
+    private String notifyDJNonDivergentSpecTemplate;
 }
