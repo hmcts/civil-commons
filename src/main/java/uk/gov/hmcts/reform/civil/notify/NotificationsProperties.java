@@ -552,5 +552,20 @@ public class NotificationsProperties {
     private String noticeOfChangeApplicantLipSolicitorTemplate;
 
     @NotEmpty
+    private String notifyClaimantLipForDefendantRepresentedTemplate;
+
+    @NotEmpty
+    private String notifyDefendantLipForNoLongerAccessTemplate;
+
+    @NotEmpty
+    private String notifyDefendantLrAfterNoticeOfChangeTemplate;
+
+    @NotEmpty
+    private String notifyClaimantLipBilingualAfterDefendantNOC;
+
+    @NotEmpty
+    private String notifyDefendantLipBilingualAfterDefendantNOC;
+
+    @NotEmpty
     private String notifyDJNonDivergentSpecTemplate;
 }
