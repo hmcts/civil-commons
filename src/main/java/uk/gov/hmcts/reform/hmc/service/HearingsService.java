@@ -27,8 +27,8 @@ public class HearingsService {
         log.debug("Sending Get Hearings with Hearing ID {}", hearingId);
         try {
             return hearingNoticeApi.getHearingRequest(
-                "Bearer " + "eyJ0eXAiOiJKV1QiLCJraWQiOiJaNEJjalZnZnZ1NVpleEt6QkVFbE1TbTQzTHM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJjaXZpbC1zeXN0ZW0tdXBkYXRlQGp1c3RpY2UuZ292LnVrIiwiY3RzIjoiT0FVVEgyX1NUQVRFTEVTU19HUkFOVCIsImF1dGhfbGV2ZWwiOjAsImF1ZGl0VHJhY2tpbmdJZCI6IjZmOTVkYTUwLTQwNjQtNGQ2YS1hMDE0LTBiOTgwZDBiNTE1OS01NzEzNDE2NzgiLCJzdWJuYW1lIjoiY2l2aWwtc3lzdGVtLXVwZGF0ZUBqdXN0aWNlLmdvdi51ayIsImlzcyI6Imh0dHBzOi8vZm9yZ2Vyb2NrLWFtLnNlcnZpY2UuY29yZS1jb21wdXRlLWlkYW0tZGVtby5pbnRlcm5hbDo4NDQzL29wZW5hbS9vYXV0aDIvcmVhbG1zL3Jvb3QvcmVhbG1zL2htY3RzIiwidG9rZW5OYW1lIjoiYWNjZXNzX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiWGF2d0FJekRyWmhpNzJ4MDFHZWFQZWN2QW5rIiwiYXVkIjoiaG1jdHMiLCJuYmYiOjE3MTM0NDMwNjQsImdyYW50X3R5cGUiOiJwYXNzd29yZCIsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJyb2xlcyJdLCJhdXRoX3RpbWUiOjE3MTM0NDMwNjQsInJlYWxtIjoiL2htY3RzIiwiZXhwIjoxNzEzNDcxODY0LCJpYXQiOjE3MTM0NDMwNjQsImV4cGlyZXNfaW4iOjI4ODAwLCJqdGkiOiJyVml5TzNNd1V4aWJzRWE4Y0F6em5HNlQyUlEifQ.I8ms-h_uAXevnw5xKeDeD3S0kFn4jgWs3BGaATEym5xJlM7OAgv80-57T9VVY_h0Ts3sN4p-oazIC6NmcXHlggE1zXLVVNNfQG-2X20rypu3UdzX1quVdhe8S0Z6KnmS5iiI4kkhSv8r9WexYmiueieEviAuSP-R4cy7nuHz1xt30B4q6n6oBW7PLKb6GTSwVygVzEJzooio2w1j35bKRjVid_nlceGzGGmd98otROyOIBFg13k5blF8ecLUaatoFrGlMbWO6rW-OdyazMLhV1dUzs_Z8GU-YPzE8q3YpkZU3iaURSkEM4S4f958pKJLWwxUtZI8NE7gKJ4lZt6eRg",
-                "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaXZpbF9zZXJ2aWNlIiwiZXhwIjoxNzEzNDU3NDYzfQ.ELDJ6ys9r8M2xvxbttyt8Tj2bWUGSsEyEtqTzZFZITEQgDYC_jdl-OUSuMvvZd1NXlezJ-pXnFFuMCJWMCdneg",
+                authToken,
+                authTokenGenerator.generate(),
                 hearingId,
                 null);
         } catch (FeignException ex)  {
@@ -89,8 +89,8 @@ public class HearingsService {
         log.debug("Requesting Hearings for case: {}", caseId);
         try {
             return hearingNoticeApi.getHearings(
-                "Bearer " + "eyJ0eXAiOiJKV1QiLCJraWQiOiJaNEJjalZnZnZ1NVpleEt6QkVFbE1TbTQzTHM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJjaXZpbC1zeXN0ZW0tdXBkYXRlQGp1c3RpY2UuZ292LnVrIiwiY3RzIjoiT0FVVEgyX1NUQVRFTEVTU19HUkFOVCIsImF1dGhfbGV2ZWwiOjAsImF1ZGl0VHJhY2tpbmdJZCI6IjZmOTVkYTUwLTQwNjQtNGQ2YS1hMDE0LTBiOTgwZDBiNTE1OS01NzEzNDE2NzgiLCJzdWJuYW1lIjoiY2l2aWwtc3lzdGVtLXVwZGF0ZUBqdXN0aWNlLmdvdi51ayIsImlzcyI6Imh0dHBzOi8vZm9yZ2Vyb2NrLWFtLnNlcnZpY2UuY29yZS1jb21wdXRlLWlkYW0tZGVtby5pbnRlcm5hbDo4NDQzL29wZW5hbS9vYXV0aDIvcmVhbG1zL3Jvb3QvcmVhbG1zL2htY3RzIiwidG9rZW5OYW1lIjoiYWNjZXNzX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiWGF2d0FJekRyWmhpNzJ4MDFHZWFQZWN2QW5rIiwiYXVkIjoiaG1jdHMiLCJuYmYiOjE3MTM0NDMwNjQsImdyYW50X3R5cGUiOiJwYXNzd29yZCIsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJyb2xlcyJdLCJhdXRoX3RpbWUiOjE3MTM0NDMwNjQsInJlYWxtIjoiL2htY3RzIiwiZXhwIjoxNzEzNDcxODY0LCJpYXQiOjE3MTM0NDMwNjQsImV4cGlyZXNfaW4iOjI4ODAwLCJqdGkiOiJyVml5TzNNd1V4aWJzRWE4Y0F6em5HNlQyUlEifQ.I8ms-h_uAXevnw5xKeDeD3S0kFn4jgWs3BGaATEym5xJlM7OAgv80-57T9VVY_h0Ts3sN4p-oazIC6NmcXHlggE1zXLVVNNfQG-2X20rypu3UdzX1quVdhe8S0Z6KnmS5iiI4kkhSv8r9WexYmiueieEviAuSP-R4cy7nuHz1xt30B4q6n6oBW7PLKb6GTSwVygVzEJzooio2w1j35bKRjVid_nlceGzGGmd98otROyOIBFg13k5blF8ecLUaatoFrGlMbWO6rW-OdyazMLhV1dUzs_Z8GU-YPzE8q3YpkZU3iaURSkEM4S4f958pKJLWwxUtZI8NE7gKJ4lZt6eRg",
-                "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaXZpbF9zZXJ2aWNlIiwiZXhwIjoxNzEzNDU3NDYzfQ.ELDJ6ys9r8M2xvxbttyt8Tj2bWUGSsEyEtqTzZFZITEQgDYC_jdl-OUSuMvvZd1NXlezJ-pXnFFuMCJWMCdneg",
+                authToken,
+                authTokenGenerator.generate(),
                 caseId,
                 status);
         } catch (FeignException e) {
