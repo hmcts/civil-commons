@@ -7,92 +7,24 @@
     </notes>
     <cve>CVE-2016-1000027</cve>
   </suppress>
-  <suppress>
-    <notes>False positive. We don't have any reference to json-java_project:json-java
-      nor any reference to hutool:hutool:5.8.10. Suppressed long-term to re-assess and possibly delete.</notes>
-    <cve>CVE-2022-45688</cve>
-    <cve>CVE-2023-5072</cve>
-  </suppress>
-  <suppress>
-    <cve>CVE-2020-8908</cve>
-  </suppress>
   <suppress until="2030-01-01">
-    <notes><![CDATA[
+  <notes><![CDATA[
                 incorrectly tagging spring-security-crypto, Affects versions prior to 5.3.2
                 ]]>
-    </notes>
-    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.+?$</packageUrl>
-    <cve>CVE-2020-5408</cve>
-  </suppress>
-  <suppress until="2030-01-01">
-    <notes>
-      False Positive - we are not using any wildcard patterns for spring security configuration
-    </notes>
-    <cve>CVE-2023-34034</cve>
-  </suppress>
-  <!--End of false positives section -->
-
-  <!--Please add all the temporary suppression under the below section-->
-  <suppress until="2023-12-14">
-    <cve>CVE-2023-20861</cve>
-    <cve>CVE-2023-28708</cve>
-    <cve>CVE-2023-20860</cve>
-    <cve>CVE-2023-2976</cve>
-    <cve>CVE-2023-20862</cve>
-    <cve>CVE-2023-20883</cve>
-    <cve>CVE-2023-41080</cve>
-    <cve>CVE-2023-34040</cve>
-  </suppress>
-  <suppress until="2024-01-10">
-    <cve>CVE-2023-33202</cve>
-    <cve>CVE-2023-46589</cve>
-  </suppress>
-  <suppress until="2024-01-10">
-    <notes>file name: cpe:2.3:a:qos:logback:*:*:*:*:*:*:*:*</notes>
-    <cve>CVE-2023-6378</cve>
-  </suppress>
-  <suppress>
-    <notes>file name: cpe:2.3:a:bouncycastle:bouncy-castle-crypto-package:1.70</notes>
-    <cve>CVE-2023-33201</cve>
-    <cve>CVE-2024-29857</cve>
-    <cve>CVE-2024-30171</cve>
-    <cve>CVE-2024-30172</cve>
-  </suppress>
-  <suppress>
-    <notes>file name: cpe:2.3:a:pivotal_software:spring_security:5.7.7</notes>
-    <cve>CVE-2023-20862</cve>
-  </suppress>
-  <suppress>
-    <notes>file name: cpe:2.3:a:fasterxml:jackson-databind:2.13.5</notes>
-    <cve>CVE-2023-35116</cve>
-  </suppress>
-  <suppress>
-    <notes>file name: cpe:2.3:a:jose4j_project:jose4j:0.7.7</notes>
-    <cve>CVE-2023-31582</cve>
-  </suppress>
-  <suppress>
-    <notes>file name: cpe:2.3:a:snakeyaml_project:snakeyaml:1.33</notes>
-    <cve>CVE-2022-1471</cve>
-  </suppress>
-  <suppress>
-    <notes>package name: pkg:maven/org.springframework/spring-aop@5.3.25</notes>
-    <cve>CVE-2023-20860</cve>
-    <cve>CVE-2023-20861</cve>
-    <cve>CVE-2023-20863</cve>
-  </suppress>
-  <suppress>
-    <notes>package name: pkg:maven/org.springframework.boot/spring-boot@2.7.9</notes>
-    <cve>CVE-2023-20873</cve>
-    <cve>CVE-2023-20883</cve>
-    <cve>CVE-2023-34055</cve>
-    <cve>CVE-2024-22243</cve>
-  </suppress>
-  <suppress until="2024-06-06">
-    <cve>CVE-2023-33202</cve>
-    <cve>CVE-2023-46589</cve>
-    <cve>CVE-2023-6378</cve>
-    <cve>CVE-2024-22243</cve>
-    <cve>CVE-2023-51775</cve>
+  </notes>
+  <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.+?$</packageUrl>
+  <cve>CVE-2020-5408</cve>
   </suppress>
   <!--End of temporary suppression section -->
+  <suppress until="2024-10-22">
+    <cve>CVE-2023-33202</cve>
+    <cve>CVE-2023-33201</cve>
+    <cve>CVE-2024-30171</cve>
+    <cve>CVE-2024-29857</cve>
+    <cve>CVE-2024-22243</cve>
+    <cve>CVE-2023-51775</cve>
+    <cve>CVE-2022-45688</cve>
+    <cve>CVE-2023-5072</cve>
+    <cve>CVE-2024-22262</cve>
+  </suppress>
 </suppressions>
