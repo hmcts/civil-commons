@@ -567,5 +567,8 @@ public class NotificationsProperties {
     private String notifyDefendantLipBilingualAfterDefendantNOC;
 
     @NotEmpty
-    private String notifyDJNonDivergentSpecTemplate;
+    private String notifyDJNonDivergentSpecClaimantTemplate;
+
+    @NotEmpty
+    private String notifyDJNonDivergentSpecDefendantTemplate;
 }
