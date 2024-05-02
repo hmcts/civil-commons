@@ -572,4 +572,9 @@ public class NotificationsProperties {
     @NotEmpty
     private String notifyDefendantLipBilingualAfterDefendantNOC;
 
+    @NotEmpty
+    private String notifyDJNonDivergentSpecClaimantTemplate;
+
+    @NotEmpty
+    private String notifyDJNonDivergentSpecDefendantTemplate;
 }
