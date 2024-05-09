@@ -34,6 +34,6 @@ class CaseDataContentConverterTest {
 
         Map<String, Object> expectedData = Map.of("caseId", CIVIL_CASE_ID, "applicant1", applicant1, "respondent1", Map.of("firstName", "updatedfirstname", "lastName", "updatedlastname", "email", "respond1@test.com"));
 
-        assertThat(convertData.toString()).isEqualTo(new LinkedHashMap<>(expectedData).toString());
+        assertThat(convertData).isEqualTo(expectedData);
     }
 }
