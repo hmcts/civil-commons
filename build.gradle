@@ -101,6 +101,8 @@ dependencyManagement {
       entry 'logback-classic'
       entry 'logback-core'
     }
+    //Solves CVE-2024-34447
+    dependency group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.78.1'
   }
   imports {
     mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2020.0.6'
