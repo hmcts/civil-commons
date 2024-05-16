@@ -15,6 +15,12 @@
   <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.+?$</packageUrl>
   <cve>CVE-2020-5408</cve>
   </suppress>
+
+  <suppress until="2025-10-01">
+    <notes>This CVE is suppressed Vulnerability en Java de Bouncy Castle (CVE-2024-34447)</notes>
+    <cve>CVE-2024-34447</cve>
+  </suppress>
+
   <!--End of temporary suppression section -->
   <suppress until="2024-10-22">
     <cve>CVE-2023-33202</cve>
