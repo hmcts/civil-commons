@@ -16,6 +16,7 @@ public enum DocumentType {
     HEARING_FORM,
     PIP_LETTER,
     JUDGE_FINAL_ORDER,
+    COURT_OFFICER_ORDER,
     DEFENCE_TRANSLATED_DOCUMENT,
     DRAFT_CLAIM_FORM,
     //General Application Document Type
