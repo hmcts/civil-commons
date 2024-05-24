@@ -7,6 +7,7 @@ import uk.gov.hmcts.reform.ccd.client.model.StartEventResponse;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("unchecked")
 public class CaseDataContentConverter {
 
     private CaseDataContentConverter() {
@@ -16,7 +17,7 @@ public class CaseDataContentConverter {
     public static CaseDataContent caseDataContentFromStartEventResponse(
         StartEventResponse startEventResponse, Map<String, Object> contentModified) {
         var payload = new HashMap<>(startEventResponse.getCaseDetails().getData());
-        payload.putAll(contentModified);
+        updateMap(payload, contentModified);
 
         return CaseDataContent.builder()
             .eventToken(startEventResponse.getToken())
@@ -25,5 +26,20 @@ public class CaseDataContentConverter {
                        .build())
             .data(payload)
             .build();
+    }
+
+    private static void updateMap(Map<String, Object> originalContent, Map<String, Object> modifiedContent) {
+        modifiedContent.forEach((key, value) -> {
+            if (originalContent.containsKey(key)) {
+                Object existingValue = originalContent.get(key);
+                if (existingValue instanceof Map && value instanceof Map) {
+                    updateMap((Map<String, Object>) existingValue, (Map<String, Object>) value);
+                } else {
+                    originalContent.put(key, value);
+                }
+            } else {
+                originalContent.put(key, value);
+            }
+        });
     }
 }
