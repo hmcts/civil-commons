@@ -91,6 +91,7 @@ class FeatureToggleApiTest {
             .custom("timestamp", String.valueOf(System.currentTimeMillis()))
             .custom("environment", FAKE_ENVIRONMENT)
             .custom("location", "000000")
+            .custom("caseState", "A_CASE_STATE")
             .build();
         givenToggle(FAKE_FEATURE, toggleState);
 
