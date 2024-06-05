@@ -583,4 +583,8 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyDJNonDivergentSpecDefendantTemplate;
+    @NotEmpty
+    private String notifyClaimantLRJudgmentByAdmissionTemplate;
+    @NotEmpty
+    private String notifyDefendantLIPJudgmentByAdmissionTemplate;
 }
