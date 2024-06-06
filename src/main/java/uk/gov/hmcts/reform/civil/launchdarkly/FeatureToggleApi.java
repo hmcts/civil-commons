@@ -67,6 +67,6 @@ public class FeatureToggleApi {
 
     public boolean isFeatureEnabledForCaseStateAndLocation(String feature, String location, String caseState, boolean defaultValue) {
         return internalClient.boolVariation(feature, createLDUser()
-            .custom( "location", location).custom("caseState", caseState).build(), defaultValue);
+            .custom("location", location).custom("caseState", caseState).build(), defaultValue);
     }
 }
