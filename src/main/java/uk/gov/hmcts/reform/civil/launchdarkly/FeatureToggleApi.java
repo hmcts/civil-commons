@@ -60,13 +60,4 @@ public class FeatureToggleApi {
     public boolean isFeatureEnabledForDate(String feature, Long date, boolean defaultValue) {
         return internalClient.boolVariation(feature, createLDUser().custom("timestamp", date).build(), defaultValue);
     }
-
-    public boolean isFeatureEnabledForCaseState(String feature, String caseState, boolean defaultValue) {
-        return internalClient.boolVariation(feature, createLDUser().custom("caseState", caseState).build(), defaultValue);
-    }
-
-    public boolean isFeatureEnabledForCaseStateAndLocation(String feature, String location, String caseState, boolean defaultValue) {
-        return internalClient.boolVariation(feature, createLDUser()
-            .custom("location", location).custom("caseState", caseState).build(), defaultValue);
-    }
 }
