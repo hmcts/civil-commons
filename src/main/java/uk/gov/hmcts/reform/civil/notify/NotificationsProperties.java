@@ -324,6 +324,9 @@ public class NotificationsProperties {
     private String mediationUnsuccessfulLRTemplate;
 
     @NotEmpty
+    private String mediationUnsuccessfulLRTemplateForLipVLr;
+
+    @NotEmpty
     private String mediationUnsuccessfulNoAttendanceLRTemplate;
 
     @NotEmpty
@@ -541,6 +544,9 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyLrDefendantSuccessfulMediation;
+
+    @NotEmpty
+    private String notifyLrDefendantSuccessfulMediationForLipVLrClaim;
 
     @NotEmpty
     private String notifyTwoVOneDefendantSuccessfulMediation;
