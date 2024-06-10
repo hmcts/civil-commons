@@ -333,6 +333,9 @@ public class NotificationsProperties {
     private String mediationUnsuccessfulLIPTemplate;
 
     @NotEmpty
+    private String mediationUnsuccessfulLIPTemplateWelsh;
+
+    @NotEmpty
     private String mediationUnsuccessfulDefendantLIPTemplate;
 
     @NotEmpty
@@ -555,6 +558,9 @@ public class NotificationsProperties {
     private String notifyLipSuccessfulMediation;
 
     @NotEmpty
+    private String notifyLipSuccessfulMediationWelsh;
+
+    @NotEmpty
     private String notifyLrDefendantSuccessfulMediation;
 
     @NotEmpty
@@ -595,4 +601,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String notifyDJNonDivergentSpecDefendantTemplate;
+
+    @NotEmpty
+    private String hearingNotificationLipDefendantTemplateWelsh;
 }
