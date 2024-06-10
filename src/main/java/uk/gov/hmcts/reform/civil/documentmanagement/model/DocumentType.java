@@ -19,6 +19,7 @@ public enum DocumentType {
     COURT_OFFICER_ORDER,
     DEFENCE_TRANSLATED_DOCUMENT,
     DRAFT_CLAIM_FORM,
+    REQUEST_FOR_RECONSIDERATION,
     //General Application Document Type
     GENERAL_ORDER,
     DIRECTION_ORDER,
