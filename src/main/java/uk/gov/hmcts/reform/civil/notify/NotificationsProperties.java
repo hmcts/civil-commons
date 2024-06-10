@@ -592,4 +592,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String hearingNotificationLipDefendantTemplateWelsh;
+
+    @NotEmpty
+    private String evidenceUploadLipTemplateWelsh;
 }
