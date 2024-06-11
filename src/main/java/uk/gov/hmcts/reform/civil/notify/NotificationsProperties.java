@@ -438,6 +438,9 @@ public class NotificationsProperties {
     private String notifyClaimantLipHelpWithFees;
 
     @NotEmpty
+    private String notifyClaimantLipHelpWithFeesWelsh;
+
+    @NotEmpty
     private String notifyClaimantAfterClaimIssue;
 
     @NotEmpty
@@ -592,4 +595,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String hearingNotificationLipDefendantTemplateWelsh;
+
+    @NotEmpty
+    private String evidenceUploadLipTemplateWelsh;
 }
