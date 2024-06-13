@@ -58,6 +58,31 @@ public class LocationRefDataService {
         return LocationRefData.builder().build();
     }
 
+    public LocationRefData getCnbcLocation(String authToken) {
+        try {
+            ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
+                buildURIforCnbcSpec(),
+                HttpMethod.GET,
+                getHeaders(authToken),
+                new ParameterizedTypeReference<List<LocationRefData>>() {
+                }
+            );
+            List<LocationRefData> cnbcLocations = responseEntity.getBody();
+            if (cnbcLocations == null || cnbcLocations.isEmpty()) {
+                log.warn("Location Reference Data Lookup did not return any CNBC location");
+                return LocationRefData.builder().build();
+            } else {
+                if (cnbcLocations.size() > 1) {
+                    log.warn("Location Reference Data Lookup returned more than one CNBC location");
+                }
+                return cnbcLocations.get(0);
+            }
+        } catch (Exception e) {
+            log.error("Location Reference Data Lookup Failed - " + e.getMessage(), e);
+        }
+        return LocationRefData.builder().build();
+    }
+
     public List<LocationRefData> getCourtLocationsForDefaultJudgments(String authToken) {
         try {
             ResponseEntity<List<LocationRefData>> responseEntity = restTemplate.exchange(
@@ -137,6 +162,13 @@ public class LocationRefDataService {
         String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
             .queryParam("court_venue_name", "County Court Money Claims Centre");
+        return builder.buildAndExpand(new HashMap<>()).toUri();
+    }
+
+    private URI buildURIforCnbcSpec() {
+        String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
+            .queryParam("court_venue_name", "Civil National Business Centre");
         return builder.buildAndExpand(new HashMap<>()).toUri();
     }
 
