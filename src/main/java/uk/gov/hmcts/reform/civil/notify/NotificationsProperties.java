@@ -600,6 +600,9 @@ public class NotificationsProperties {
     private String evidenceUploadLipTemplateWelsh;
 
     @NotEmpty
+    private String notifySettleClaimMarkedPaidInFullDefendantTemplate;
+
+    @NotEmpty
     private String notifyClaimantLRJudgmentByAdmissionTemplate;
 
     @NotEmpty
