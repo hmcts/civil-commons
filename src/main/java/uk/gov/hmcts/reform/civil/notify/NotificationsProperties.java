@@ -387,6 +387,9 @@ public class NotificationsProperties {
     private String notifyLipUpdateTemplate;
 
     @NotEmpty
+    private String notifyLipUpdateTemplateBilingual;
+
+    @NotEmpty
     private String notifyUpdateTemplate;
 
     @NotEmpty
