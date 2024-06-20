@@ -598,4 +598,7 @@ public class NotificationsProperties {
 
     @NotEmpty
     private String evidenceUploadLipTemplateWelsh;
+
+    @NotEmpty
+    private String notifySettleClaimMarkedPaidInFullDefendantTemplate;
 }
