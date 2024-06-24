@@ -20,10 +20,6 @@ launchdarkly:
   offline-mode: false
   env: ${LAUNCH_DARKLY_ENV:default}
 
-role-assignment-service:
-  api:
-    url: ${ROLE_ASSIGNMENT_SERVICE_API_URL:http://localhost:4096}
-
 fees:
   api:
     service: civil money claims
