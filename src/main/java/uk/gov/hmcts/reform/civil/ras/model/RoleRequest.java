@@ -8,9 +8,7 @@ import lombok.Data;
 public class RoleRequest {
 
     private String assignerId;
-
-    @Builder.Default
-    private String process = "fpl-case-service";
+    private String process;
     private String reference;
 
     @Builder.Default
