@@ -4,16 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.jackson.Jacksonized;
 
 import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
+@Jacksonized
 @AllArgsConstructor
-public class RoleAssignmentServiceResponse {
+public class RoleAssignmentRequest {
 
-    private List<RoleAssignmentResponse> roleAssignmentResponse;
+    private List<RoleAssignment> requestedRoles;
+    private RoleRequest roleRequest;
 
 }
-

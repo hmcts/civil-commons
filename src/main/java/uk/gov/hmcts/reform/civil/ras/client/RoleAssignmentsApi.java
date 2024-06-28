@@ -3,8 +3,12 @@ package uk.gov.hmcts.reform.civil.ras.client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentRequest;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentServiceResponse;
+import uk.gov.hmcts.reform.civil.ras.model.UpdateRoleAssignmentResponse;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
@@ -25,5 +29,16 @@ public interface RoleAssignmentsApi {
         @RequestHeader(AUTHORIZATION) String authorization,
         @RequestHeader(SERVICE_AUTHORIZATION) String serviceAuthorization,
         @PathVariable(ACTOR_ID) String actorId);
+
+    @PostMapping(
+        value = "/am/role-assignments",
+        consumes = APPLICATION_JSON_VALUE,
+        headers = CONTENT_TYPE + "=" + APPLICATION_JSON_VALUE
+    )
+    UpdateRoleAssignmentResponse createRoleAssignment(
+        @RequestHeader(AUTHORIZATION) String authorisation,
+        @RequestHeader(SERVICE_AUTHORIZATION) String serviceAuthorization,
+        @RequestBody RoleAssignmentRequest request
+    );
 
 }

@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.civil.ras.client.RoleAssignmentsApi;
+import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentRequest;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentServiceResponse;
 
 @Service
@@ -27,5 +28,13 @@ public class RoleAssignmentsService {
             authTokenGenerator.generate(),
             actorId
         );
+    }
+
+    public void assignUserRoles(String actorId, String authorization, RoleAssignmentRequest roleAssignmentRequest) {
+        if (log.isDebugEnabled()) {
+            log.debug(actorId, "Assigning roles to actorId {0}");
+        }
+
+        roleAssignmentApi.createRoleAssignment(authorization, authTokenGenerator.generate(), roleAssignmentRequest);
     }
 }
