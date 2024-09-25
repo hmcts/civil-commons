@@ -155,6 +155,7 @@ dependencies {
 
   implementation 'org.springframework:spring-expression:5.3.39'
   implementation 'org.springframework:spring-web:5.3.39'
+  implementation 'org.springframework:spring-webmvc:6.1.13'
 
   implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '4.0.2'
   implementation group: 'org.springframework.cloud', name: 'spring-cloud-openfeign-core', version: '4.0.2'
