@@ -195,7 +195,7 @@ public class LocationRefDataService {
     private URI buildURIforCtsc(String courtName) {
         String queryURL = lrdConfiguration.getUrl() + lrdConfiguration.getEndpoint();
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(queryURL)
-            .queryParam("court_name", courtName);
+            .queryParam("court_venue_name", courtName);
         return builder.buildAndExpand(new HashMap<>()).toUri();
     }
 
