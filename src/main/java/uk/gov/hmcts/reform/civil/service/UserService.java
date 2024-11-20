@@ -17,11 +17,9 @@ public class UserService {
     private final IdamClient idamClient;
     private final boolean hmcSupportEnabled;
 
-
-
     @Autowired
     public UserService(IdamClient idamClient,
-                       @Value("hmc.support.enabled:false") boolean hmcSupportEnabled) {
+                       @Value("${hmc.support.enabled:false}") boolean hmcSupportEnabled) {
         this.idamClient = idamClient;
         this.hmcSupportEnabled = hmcSupportEnabled;
     }
