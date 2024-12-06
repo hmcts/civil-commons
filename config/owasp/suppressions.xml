@@ -16,7 +16,7 @@
   <cve>CVE-2020-5408</cve>
   </suppress>
   <!--End of temporary suppression section -->
-  <suppress until="2024-11-22">
+  <suppress until="2024-12-22">
     <cve>CVE-2023-33202</cve>
     <cve>CVE-2023-33201</cve>
     <cve>CVE-2024-30171</cve>
