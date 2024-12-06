@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.civil.ras.client.RoleAssignmentsApi;
+import uk.gov.hmcts.reform.civil.ras.model.QueryRequest;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentRequest;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentServiceResponse;
 
@@ -27,6 +28,27 @@ public class RoleAssignmentsService {
             authorization,
             authTokenGenerator.generate(),
             actorId
+        );
+    }
+
+    public RoleAssignmentServiceResponse getRoleAssignmentsWithLabels(String actorId, String authorization) {
+
+        if (log.isDebugEnabled()) {
+            log.debug(actorId, "Getting Role assignments for actorId {0}");
+        }
+
+        return roleAssignmentApi.getRoleAssignments(
+            authorization,
+            authTokenGenerator.generate(),
+            null,
+            null,
+            null,
+            null,
+            null,
+            QueryRequest.builder()
+                .actorId(actorId)
+                .build(),
+            true
         );
     }
 

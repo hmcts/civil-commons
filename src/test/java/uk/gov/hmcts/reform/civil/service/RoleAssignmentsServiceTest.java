@@ -10,13 +10,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.civil.ras.client.RoleAssignmentsApi;
 import uk.gov.hmcts.reform.civil.ras.model.GrantType;
+import uk.gov.hmcts.reform.civil.ras.model.QueryRequest;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignment;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentRequest;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentResponse;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentServiceResponse;
 import uk.gov.hmcts.reform.civil.ras.model.RoleCategory;
 import uk.gov.hmcts.reform.civil.ras.model.RoleRequest;
-import uk.gov.hmcts.reform.civil.ras.model.RoleType;
 
 import java.util.List;
 import java.util.Map;
@@ -28,6 +28,7 @@ import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static uk.gov.hmcts.reform.civil.ras.model.RoleType.ORGANISATION;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {
@@ -66,6 +67,35 @@ class RoleAssignmentsServiceTest {
     }
 
     @Test
+    void getRoleAssignmentsWithLabels_shouldReturnExpectAssignments() {
+        RoleAssignmentServiceResponse expected = RoleAssignmentServiceResponse.builder()
+            .roleAssignmentResponse(
+                List.of(RoleAssignmentResponse
+                            .builder()
+                            .actorId(ACTORID)
+                            .roleLabel("Role Label")
+                            .build()
+                )
+            )
+            .build();
+        when(roleAssignmentApi.getRoleAssignments(
+            eq(USER_AUTH_TOKEN),
+            eq(SERVICE_TOKEN),
+            eq(null),
+            eq(null),
+            eq(null),
+            eq(null),
+            eq(null),
+            eq(QueryRequest.builder().actorId(ACTORID).build()),
+            eq(true))
+        ).thenReturn(expected);
+
+        var actual = roleAssignmentsService.getRoleAssignmentsWithLabels(ACTORID, USER_AUTH_TOKEN);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void shouldReturn() {
         var roleAssignmentsExpected = roleAssignmentsService.getRoleAssignments(ACTORID, USER_AUTH_TOKEN);
         assertEquals(roleAssignmentsExpected, RAS_RESPONSE);
@@ -74,17 +104,18 @@ class RoleAssignmentsServiceTest {
     @Test
     void shouldPostExpectedPayload() {
         RoleAssignmentRequest request = RoleAssignmentRequest.builder()
-            .roleRequest(RoleRequest.builder()
-                             .assignerId(ACTORID)
-                             .reference("civil-hearings-system-user")
-                             .process("civil-system-user")
-                             .replaceExisting(true)
-                             .build())
+            .roleRequest(
+                RoleRequest.builder()
+                    .assignerId(ACTORID)
+                    .reference("civil-hearings-system-user")
+                    .process("civil-system-user")
+                    .replaceExisting(true)
+                    .build())
             .requestedRoles(List.of(
                 RoleAssignment.builder()
                     .actorId(ACTORID)
                     .actorIdType("IDAM")
-                    .roleType(RoleType.ORGANISATION)
+                    .roleType(ORGANISATION)
                     .classification("PUBLIC")
                     .grantType(GrantType.STANDARD)
                     .roleCategory(RoleCategory.SYSTEM)
