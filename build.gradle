@@ -22,8 +22,8 @@ java {
 }
 
 def versions = [
-  junit        : '5.7.0',
-  junitPlatform: '1.8.1',
+  junit        : '5.11.4',
+  junitPlatform: '1.11.4',
   lombok :       '1.18.26'
 ]
 
