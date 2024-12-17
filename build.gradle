@@ -107,6 +107,9 @@ dependencyManagement {
     // Solves CVE-2023-24998
     dependency group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
 
+    // Solve CVE-2024-22243
+    dependency group: 'org.springframework', name: 'spring-core', version: '5.3.39'
+
     //Solves CVE-2023-35116
     dependencySet(group: 'com.fasterxml.jackson.core', version: '2.16.0') {
       entry 'jackson-databind'
