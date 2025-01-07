@@ -44,6 +44,14 @@ tasks.withType(Test) {
   }
 }
 
+configurations.all {
+  exclude group:"org.bouncycastle", module: "bcprov-jdk15on"
+  exclude group:"org.bouncycastle", module: "bcutil-jdk15on"
+  exclude group:"org.bouncycastle", module: "bcpkix-jdk15on"
+  exclude group:"org.json", module: "json:20231013"
+}
+
+
 test {
   failFast = true
 }
@@ -87,11 +95,20 @@ dependencyUpdates {
 dependencyManagement {
   dependencies {
 
+    // Attempt to resolve CVE-2023-51775 (Repo Maintainer must fix)
+    dependency group: 'org.bitbucket.b_c', name: 'jose4j', version: '0.9.6'
+
+    // Attempt to resolve CVE-2022-45688 and Solves CVE-2023-5072  (Repo Maintainer must fix)
+    dependency group: 'org.json', name: 'json', version: '20240303'
+
     // Solves CVE-2024-34447, CVE-2024-29857, CVE-2024-29858, CVE-2024-30171, CVE-2023-33202
     dependency group: 'org.bouncycastle', name: 'bcpkix-jdk18on', version: '1.79'
 
     // Solves CVE-2023-24998
     dependency group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
+
+    // Solve CVE-2024-22243
+    dependency group: 'org.springframework', name: 'spring-core', version: '5.3.39'
 
     //Solves CVE-2023-35116
     dependencySet(group: 'com.fasterxml.jackson.core', version: '2.16.0') {

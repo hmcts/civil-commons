@@ -16,17 +16,18 @@
   <cve>CVE-2020-5408</cve>
   </suppress>
   <!--End of temporary suppression section -->
-  <suppress until="2024-12-22">
-    <cve>CVE-2023-33202</cve>
-    <cve>CVE-2023-33201</cve>
-    <cve>CVE-2024-30171</cve>
-    <cve>CVE-2024-29857</cve>
-    <cve>CVE-2024-22243</cve>
-    <cve>CVE-2023-51775</cve>
-    <cve>CVE-2022-45688</cve>
-    <cve>CVE-2023-5072</cve>
-    <cve>CVE-2024-22262</cve>
-    <cve>CVE-2024-34447</cve>
+  <suppress until="2025-03-23">
+    <cve>CVE-2023-33202</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
+    <cve>CVE-2023-33201</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
+    <cve>CVE-2024-30172</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
+    <cve>CVE-2024-30171</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
+    <cve>CVE-2024-29857</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
+    <!-- <cve>CVE-2024-22243</cve>  RESOLVED -->
+    <!-- <cve>CVE-2023-51775</cve>  RESOLVED -->
+    <cve>CVE-2022-45688</cve>  <!-- json-20240303.jar  UNRESOLVED -->
+    <cve>CVE-2023-5072</cve>   <!-- json-20240303.jar  UNRESOLVED -->
+    <!-- <cve>CVE-2024-22262</cve>  RESOLVED -->
+    <!-- <cve>CVE-2024-34447</cve>  RESOLVED -->
     <cve>CVE-2024-38820</cve>
     <cve>CVE-2024-38828</cve>
   </suppress>
