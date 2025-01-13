@@ -49,6 +49,12 @@ configurations.all {
   exclude group:"org.bouncycastle", module: "bcutil-jdk15on"
   exclude group:"org.bouncycastle", module: "bcpkix-jdk15on"
   exclude group:"org.json", module: "json:20231013"
+  exclude group: "org.slf4j", module: "slf4j-log4j12"
+  exclude group: "org.slf4j", module: "slf4j-simple"
+  exclude group: "org.slf4j", module: "jul-to-slf4j"
+  exclude group: "org.slf4j", module: "log4j-over-slf4j"
+  exclude group: "ch.qos.logback", module: "logback-classic"
+  exclude group: "ch.qos.logback", module: "logback-core"
 }
 
 
@@ -117,11 +123,6 @@ dependencyManagement {
       entry 'jackson-annotations'
     }
 
-    //Solves CVE-2024-12798
-    dependencySet(group: 'ch.qos.logback', version: '1.5.13') {
-      entry 'logback-classic'
-      entry 'logback-core'
-    }
   }
   imports {
     mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2020.0.6'
@@ -208,6 +209,9 @@ dependencies {
   implementation group: 'com.launchdarkly', name: 'launchdarkly-java-server-sdk', version: '6.2.1'
   implementation group: 'com.google.guava', name: 'guava', version: '32.0.1-jre'
 
+  implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.5.13'
+  implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.13'
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
 
   annotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
   compileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
