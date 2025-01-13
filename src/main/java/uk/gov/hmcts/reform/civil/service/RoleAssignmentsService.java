@@ -9,6 +9,9 @@ import uk.gov.hmcts.reform.civil.ras.model.QueryRequest;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentRequest;
 import uk.gov.hmcts.reform.civil.ras.model.RoleAssignmentServiceResponse;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -50,6 +53,29 @@ public class RoleAssignmentsService {
                 .build(),
             true
         );
+    }
+
+    public RoleAssignmentServiceResponse queryRoleAssignmentsByCaseIdAndRole(String caseId, List<String> roleType,
+                                                              List<String> roleName, String authorization) {
+        if (log.isDebugEnabled()) {
+            log.debug(caseId, "Getting Role assignments for case ID {0}");
+        }
+
+        QueryRequest queryRequest = QueryRequest.builder()
+            .roleType(roleType)
+            .roleName(roleName)
+            .attributes(Map.of("caseId", List.of(caseId)))
+            .build();
+
+        return this.roleAssignmentApi.getRoleAssignments(authorization,
+                                                         this.authTokenGenerator.generate(),
+                                                         null,
+                                                         null,
+                                                         null,
+                                                         "roleName",
+                                                         null,
+                                                         queryRequest,
+                                                         true);
     }
 
     public void assignUserRoles(String actorId, String authorization, RoleAssignmentRequest roleAssignmentRequest) {
