@@ -130,7 +130,6 @@ class RoleAssignmentsServiceTest {
         ).thenReturn(expected);
 
         var actual = roleAssignmentsService.queryRoleAssignmentsByCaseIdAndRole(CASE_ID, ROLE_TYPE, ROLE_NAME, USER_AUTH_TOKEN);
-        System.out.println("ggggggggggggggggg"+actual);
 
         assertEquals(expected, actual);
     }
