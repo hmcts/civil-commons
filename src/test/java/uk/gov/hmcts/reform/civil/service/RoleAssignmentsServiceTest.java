@@ -41,7 +41,7 @@ class RoleAssignmentsServiceTest {
     private static final String ACTORID = "1111111";
     private static final String CASE_ID = "123456789";
     private static final List<String> ROLE_TYPE = List.of("test_role_type_case");
-    private static final List<String> ROLE_NAME = List.of("test_role_name_judge", "test_role_name_judge_lead" );
+    private static final List<String> ROLE_NAME = List.of("test_role_name_judge", "test_role_name_judge_lead");
     private static RoleAssignmentServiceResponse RAS_RESPONSE = RoleAssignmentServiceResponse
         .builder()
         .roleAssignmentResponse(
