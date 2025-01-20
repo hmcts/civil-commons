@@ -15,5 +15,7 @@ public class Attributes {
     private String caseId;
     private String jurisdiction;
     private String caseType;
-
+    private String primaryLocation;
+    private String region;
+    private String contractType;
 }

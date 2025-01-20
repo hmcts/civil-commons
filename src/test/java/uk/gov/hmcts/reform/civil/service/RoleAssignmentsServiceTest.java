@@ -39,6 +39,9 @@ class RoleAssignmentsServiceTest {
     private static final String USER_AUTH_TOKEN = "Bearer caa-user-xyz";
     private static final String SERVICE_TOKEN = "Bearer service-token";
     private static final String ACTORID = "1111111";
+    private static final String CASE_ID = "123456789";
+    private static final List<String> ROLE_TYPE = List.of("test_role_type_case");
+    private static final List<String> ROLE_NAME = List.of("test_role_name_judge", "test_role_name_judge_lead");
     private static RoleAssignmentServiceResponse RAS_RESPONSE = RoleAssignmentServiceResponse
         .builder()
         .roleAssignmentResponse(
@@ -91,6 +94,42 @@ class RoleAssignmentsServiceTest {
         ).thenReturn(expected);
 
         var actual = roleAssignmentsService.getRoleAssignmentsWithLabels(ACTORID, USER_AUTH_TOKEN);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getRoleAssignmentsByCaseIdAndRole_shouldReturnExpectAssignments() {
+        RoleAssignmentServiceResponse expected = RoleAssignmentServiceResponse.builder()
+            .roleAssignmentResponse(
+                List.of(RoleAssignmentResponse
+                            .builder()
+                            .actorId(ACTORID)
+                            .roleLabel("Role Label")
+                            .build()
+                )
+            )
+            .build();
+
+        QueryRequest queryRequest = QueryRequest.builder()
+            .roleType(ROLE_TYPE)
+            .roleName(ROLE_NAME)
+            .attributes(Map.of("caseId", List.of(CASE_ID)))
+            .build();
+
+        when(roleAssignmentApi.getRoleAssignments(
+            eq(USER_AUTH_TOKEN),
+            eq(SERVICE_TOKEN),
+            eq(null),
+            eq(null),
+            eq(null),
+            eq("roleName"),
+            eq(null),
+            eq(queryRequest),
+            eq(true))
+        ).thenReturn(expected);
+
+        var actual = roleAssignmentsService.queryRoleAssignmentsByCaseIdAndRole(CASE_ID, ROLE_TYPE, ROLE_NAME, USER_AUTH_TOKEN);
 
         assertEquals(expected, actual);
     }
