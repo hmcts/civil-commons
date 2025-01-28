@@ -30,5 +30,7 @@
     <!-- <cve>CVE-2024-34447</cve>  RESOLVED -->
     <cve>CVE-2024-38820</cve>
     <cve>CVE-2024-38828</cve>
+    <cve>CVE-2024-12801</cve>
+    <cve>CVE-2024-12798</cve>
   </suppress>
 </suppressions>
