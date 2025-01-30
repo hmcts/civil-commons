@@ -1,7 +1,7 @@
 plugins {
   id 'checkstyle'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.1.0'
+  id 'io.spring.dependency-management' version '1.1.6'
   id 'org.springframework.boot' version '2.7.18'
   id 'org.owasp.dependencycheck' version '8.3.1'
   id 'com.github.ben-manes.versions' version '0.46.0'
@@ -43,6 +43,14 @@ tasks.withType(Test) {
     exceptionFormat = 'full'
   }
 }
+
+configurations.all {
+  exclude group:"org.bouncycastle", module: "bcprov-jdk15on"
+  exclude group:"org.bouncycastle", module: "bcutil-jdk15on"
+  exclude group:"org.bouncycastle", module: "bcpkix-jdk15on"
+  exclude group:"org.json", module: "json:20231013"
+}
+
 
 test {
   failFast = true
@@ -86,8 +94,21 @@ dependencyUpdates {
 
 dependencyManagement {
   dependencies {
+
+    // Attempt to resolve CVE-2023-51775 (Repo Maintainer must fix)
+    dependency group: 'org.bitbucket.b_c', name: 'jose4j', version: '0.9.6'
+
+    // Attempt to resolve CVE-2022-45688 and Solves CVE-2023-5072  (Repo Maintainer must fix)
+    dependency group: 'org.json', name: 'json', version: '20240303'
+
+    // Solves CVE-2024-34447, CVE-2024-29857, CVE-2024-29858, CVE-2024-30171, CVE-2023-33202
+    dependency group: 'org.bouncycastle', name: 'bcpkix-jdk18on', version: '1.79'
+
     // Solves CVE-2023-24998
     dependency group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
+
+    // Solve CVE-2024-22243
+    dependency group: 'org.springframework', name: 'spring-core', version: '5.3.39'
 
     //Solves CVE-2023-35116
     dependencySet(group: 'com.fasterxml.jackson.core', version: '2.16.0') {
@@ -147,6 +168,14 @@ ext.libraries = [
 ]
 
 dependencies {
+  constraints {
+    implementation( 'org.bouncycastle:bcpkix-jdk18on:1.79' ) {
+      because 'previous versions have a CVE impacting security'
+    }
+  }
+
+  implementation group: 'org.bouncycastle', name: 'bcpkix-jdk18on', version: '1.79'
+
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
@@ -155,7 +184,7 @@ dependencies {
 
   implementation 'org.springframework:spring-expression:5.3.39'
   implementation 'org.springframework:spring-web:5.3.39'
-  implementation 'org.springframework:spring-webmvc:6.1.13'
+  implementation 'org.springframework:spring-webmvc:6.1.14'
 
   implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '4.0.2'
   implementation group: 'org.springframework.cloud', name: 'spring-cloud-openfeign-core', version: '4.0.2'
@@ -165,7 +194,7 @@ dependencies {
   implementation group: 'com.sendgrid', name: 'sendgrid-java', version: '4.9.3'
   implementation group: 'com.github.hmcts', name: 'ccd-client', version: '4.9.1'
 
-  implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+  implementation group: 'commons-io', name: 'commons-io', version: '2.17.0'
   implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 
   implementation group: 'uk.gov.service.notify', name: 'notifications-java-client', version: '5.0.0-RELEASE'
@@ -178,6 +207,7 @@ dependencies {
 
   implementation group: 'com.launchdarkly', name: 'launchdarkly-java-server-sdk', version: '6.2.1'
   implementation group: 'com.google.guava', name: 'guava', version: '32.0.1-jre'
+
 
   annotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
   compileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
