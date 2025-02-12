@@ -88,7 +88,7 @@
     <cve>CVE-2023-46589</cve>
     <cve>CVE-2023-6378</cve>
   </suppress>
-  <suppress until="2024-04-04">
+  <suppress until="2025-04-04">
     <notes>'org.apache.tomcat.embed', version: '9.0.82'</notes>
     <cve>CVE-2024-38286</cve>
   </suppress>
