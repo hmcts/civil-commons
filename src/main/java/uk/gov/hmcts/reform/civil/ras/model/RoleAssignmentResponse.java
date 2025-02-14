@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 @Data
 @Builder
@@ -22,8 +22,9 @@ public class RoleAssignmentResponse {
     private String grantType;
     private String roleCategory;
     private Boolean readOnly;
-    private LocalDate beginTime;
-    private LocalDate created;
+    private ZonedDateTime beginTime;
+    private ZonedDateTime endTime;
+    private ZonedDateTime created;
     private Attributes attributes;
 
 }
