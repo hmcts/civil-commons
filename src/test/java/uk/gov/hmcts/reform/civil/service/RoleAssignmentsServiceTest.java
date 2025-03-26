@@ -86,7 +86,7 @@ class RoleAssignmentsServiceTest {
             eq(SERVICE_TOKEN),
             eq(null),
             eq(null),
-            eq(null),
+            eq(100),
             eq(null),
             eq(null),
             eq(QueryRequest.builder().actorId(ACTORID).roleName(ROLE_NAME).build()),
