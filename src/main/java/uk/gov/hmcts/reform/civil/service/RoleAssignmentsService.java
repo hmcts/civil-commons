@@ -33,7 +33,7 @@ public class RoleAssignmentsService {
             actorId
         );
     }
-    
+
     public RoleAssignmentServiceResponse getRoleAssignmentsWithLabels(String actorId, String authorization, List<String> roleNames) {
 
         if (log.isDebugEnabled()) {
@@ -45,7 +45,7 @@ public class RoleAssignmentsService {
             authTokenGenerator.generate(),
             null,
             null,
-            null,
+            100,
             null,
             null,
             QueryRequest.builder()
