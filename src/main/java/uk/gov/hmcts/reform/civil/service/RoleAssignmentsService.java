@@ -33,8 +33,7 @@ public class RoleAssignmentsService {
             actorId
         );
     }
-
-    //roleNames will filter the assignments to only those that match specified role names,if everything needs to be returned, leave that as null.
+    
     public RoleAssignmentServiceResponse getRoleAssignmentsWithLabels(String actorId, String authorization, List<String> roleNames) {
 
         if (log.isDebugEnabled()) {
