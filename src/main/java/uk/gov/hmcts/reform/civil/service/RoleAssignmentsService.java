@@ -34,7 +34,8 @@ public class RoleAssignmentsService {
         );
     }
 
-    public RoleAssignmentServiceResponse getRoleAssignmentsWithLabels(String actorId, String authorization) {
+    //roleNames will filter the assignments to only those that match specified role names,if everything needs to be returned, leave that as null.
+    public RoleAssignmentServiceResponse getRoleAssignmentsWithLabels(String actorId, String authorization, List<String> roleNames) {
 
         if (log.isDebugEnabled()) {
             log.debug(actorId, "Getting Role assignments for actorId {0}");
@@ -50,6 +51,7 @@ public class RoleAssignmentsService {
             null,
             QueryRequest.builder()
                 .actorId(actorId)
+                .roleName(roleNames)
                 .build(),
             true
         );
