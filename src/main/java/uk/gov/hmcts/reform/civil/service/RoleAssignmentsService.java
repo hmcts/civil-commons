@@ -34,7 +34,7 @@ public class RoleAssignmentsService {
         );
     }
 
-    public RoleAssignmentServiceResponse getRoleAssignmentsWithLabels(String actorId, String authorization) {
+    public RoleAssignmentServiceResponse getRoleAssignmentsWithLabels(String actorId, String authorization, List<String> roleNames) {
 
         if (log.isDebugEnabled()) {
             log.debug(actorId, "Getting Role assignments for actorId {0}");
@@ -45,11 +45,12 @@ public class RoleAssignmentsService {
             authTokenGenerator.generate(),
             null,
             null,
-            null,
+            100,
             null,
             null,
             QueryRequest.builder()
                 .actorId(actorId)
+                .roleName(roleNames)
                 .build(),
             true
         );

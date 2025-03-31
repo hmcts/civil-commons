@@ -86,14 +86,14 @@ class RoleAssignmentsServiceTest {
             eq(SERVICE_TOKEN),
             eq(null),
             eq(null),
+            eq(100),
             eq(null),
             eq(null),
-            eq(null),
-            eq(QueryRequest.builder().actorId(ACTORID).build()),
+            eq(QueryRequest.builder().actorId(ACTORID).roleName(ROLE_NAME).build()),
             eq(true))
         ).thenReturn(expected);
 
-        var actual = roleAssignmentsService.getRoleAssignmentsWithLabels(ACTORID, USER_AUTH_TOKEN);
+        var actual = roleAssignmentsService.getRoleAssignmentsWithLabels(ACTORID, USER_AUTH_TOKEN, ROLE_NAME);
 
         assertEquals(expected, actual);
     }

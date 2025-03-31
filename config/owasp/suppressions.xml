@@ -20,7 +20,7 @@
     <cve>CVE-2024-38286</cve>
   </suppress>
   <!--End of temporary suppression section -->
-  <suppress until="2025-03-23">
+  <suppress until="2025-04-23">
     <cve>CVE-2023-33202</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
     <cve>CVE-2023-33201</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
     <cve>CVE-2024-30172</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
@@ -36,5 +36,7 @@
     <cve>CVE-2024-38828</cve>
     <cve>CVE-2024-12801</cve>
     <cve>CVE-2024-12798</cve>
+    <cve>CVE-2025-22228</cve>
+    <cve>CVE-2025-24813</cve>
   </suppress>
 </suppressions>
