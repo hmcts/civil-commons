@@ -1,3 +1,4 @@
+
 plugins {
   id 'checkstyle'
   id 'jacoco'
@@ -10,7 +11,7 @@ plugins {
   id 'maven-publish'
 }
 
-def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
+def buildNumber = System.getenv("RELEASE_VERSION") ?: "DEV-SNAPSHOT"
 
 group = 'com.github.hmcts'
 version = buildNumber
@@ -149,7 +150,12 @@ repositories {
   mavenLocal()
   mavenCentral()
   maven {
-    url "https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1"
+    name = "AzureArtifacts"
+    url uri("https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1")
+    credentials {
+      username = System.getenv("AZURE_DEVOPS_ARTIFACT_USERNAME")
+      password = System.getenv("AZURE_DEVOPS_ARTIFACT_TOKEN")
+    }
   }
 }
 
@@ -317,3 +323,5 @@ publishing {
     }
   }
 }
+
+
