@@ -15,12 +15,12 @@
   <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.+?$</packageUrl>
   <cve>CVE-2020-5408</cve>
   </suppress>
-  <suppress until="2025-04-04">
+  <suppress until="2030-01-04">
     <notes>'org.apache.tomcat.embed', version: '9.0.82'</notes>
     <cve>CVE-2024-38286</cve>
   </suppress>
   <!--End of temporary suppression section -->
-  <suppress until="2025-04-23">
+  <suppress until="2030-01-23">
     <cve>CVE-2023-33202</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
     <cve>CVE-2023-33201</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
     <cve>CVE-2024-30172</cve>  <!-- JOSE4j 0.9.6  UNRESOLVED -->
@@ -38,15 +38,8 @@
     <cve>CVE-2024-12798</cve>
     <cve>CVE-2025-22228</cve>
     <cve>CVE-2025-24813</cve>
-    <cve>CVE-2022-45688</cve>
-    <cve>CVE-2023-5072</cve>
-    <cve>CVE-2024-38828</cve>
     <cve>CVE-2025-31650</cve>
     <cve>CVE-2025-31651</cve>
     <cve>CVE-2025-22235</cve>
-    <cve>CVE-2024-38286</cve>
-    <cve>CVE-2024-38820</cve>
-    <cve>CVE-2025-24813</cve>
-    <cve>CVE-2025-22228</cve>
   </suppress>
 </suppressions>
