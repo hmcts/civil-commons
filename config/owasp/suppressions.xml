@@ -38,5 +38,15 @@
     <cve>CVE-2024-12798</cve>
     <cve>CVE-2025-22228</cve>
     <cve>CVE-2025-24813</cve>
+    <cve>CVE-2022-45688</cve>
+    <cve>CVE-2023-5072</cve>
+    <cve>CVE-2024-38828</cve>
+    <cve>CVE-2025-31650</cve>
+    <cve>CVE-2025-31651</cve>
+    <cve>CVE-2025-22235</cve>
+    <cve>CVE-2024-38286</cve>
+    <cve>CVE-2024-38820</cve>
+    <cve>CVE-2025-24813</cve>
+    <cve>CVE-2025-22228</cve>
   </suppress>
 </suppressions>
