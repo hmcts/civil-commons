@@ -123,9 +123,22 @@ dependencyManagement {
       entry 'jackson-annotations'
     }
 
+    dependencySet(group: 'org.apache.tomcat.embed', version: '10.1.40') {
+      entry 'tomcat-embed-core'
+      entry 'tomcat-embed-el'
+      entry 'tomcat-embed-websocket'
+    }
+    //Solves CVE-2023-6481
+    dependencySet(group: 'ch.qos.logback', version: '1.2.13') {
+      entry 'logback-core'
+      entry 'logback-classic'
+    }
+
+
   }
   imports {
-    mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2020.0.6'
+    mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2021.0.9'
+    mavenBom "com.azure.spring:spring-cloud-azure-dependencies:5.22.0"
   }
 }
 // https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
@@ -198,7 +211,7 @@ dependencies {
   implementation group: 'commons-io', name: 'commons-io', version: '2.17.0'
   implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 
-  implementation group: 'uk.gov.service.notify', name: 'notifications-java-client', version: '5.0.0-RELEASE'
+  implementation group: 'uk.gov.service.notify', name: 'notifications-java-client', version: '5.2.1-RELEASE'
   implementation group: 'com.github.hmcts', name: 'service-auth-provider-java-client', version: '4.0.3'
   implementation group: 'com.github.hmcts', name: 'idam-java-client', version: '2.0.1'
   implementation group: 'com.github.hmcts', name: 'send-letter-client', version: '3.0.4'

@@ -65,7 +65,7 @@ class HearingsServiceTest {
     private final FeignException notFoundFeignException = new FeignException.NotFound(
         "not found message",
         Request.create(GET, "", Map.of(), new byte[]{}, UTF_8, null),
-        "not found response body".getBytes(UTF_8));
+        "not found response body".getBytes(UTF_8), null);
 
     @BeforeEach
     void setUp() {
