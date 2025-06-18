@@ -21,4 +21,4 @@ jobs:
       - name: Build
         run: ./gradlew check
       - name: Dependency check
-        run: ./gradlew --no-daemon --stacktrace -DdependencyCheck.failBuild=true -Dnvd.api.check.validforhours=24 -Danalyzer.central.enabled=false -Danalyzer.retirejs.enabled=false -Danalyzer.ossindex.enabled=false -Dnvd.api.key=e416bf77-f201-4dc6-b17b-756486c99608 dependencyCheckAggregate
+        run: ./gradlew dependencyCheckAggregate
