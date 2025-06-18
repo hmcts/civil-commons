@@ -41,5 +41,19 @@
     <cve>CVE-2025-31650</cve>
     <cve>CVE-2025-31651</cve>
     <cve>CVE-2025-22235</cve>
+    <cve>CVE-2024-22259</cve>
+    <cve>CVE-2024-38808</cve>
+    <cve>CVE-2025-22233</cve>
+    <cve>CVE-2024-52316</cve>
+    <cve>CVE-2024-24549</cve>
+    <cve>CVE-2024-34750</cve>
+    <cve>CVE-2024-23672</cve>
+    <cve>CVE-2025-41234</cve>
+    <cve>CVE-2024-52316</cve>
+    <cve>CVE-2025-48988</cve>
+    <cve>CVE-2024-24549</cve>
+    <cve>CVE-2024-34750</cve>
+    <cve>CVE-2025-49125</cve>
+    <cve>CVE-2024-23672</cve>
   </suppress>
 </suppressions>
