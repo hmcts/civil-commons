@@ -20,8 +20,9 @@ import static org.mockito.Mockito.verify;
 import static uk.gov.hmcts.reform.civil.service.BulkPrintService.ADDITIONAL_DATA_CASE_IDENTIFIER_KEY;
 import static uk.gov.hmcts.reform.civil.service.BulkPrintService.ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY;
 import static uk.gov.hmcts.reform.civil.service.BulkPrintService.ADDITIONAL_DATA_LETTER_TYPE_KEY;
-import static uk.gov.hmcts.reform.civil.service.BulkPrintService.XEROX_TYPE_PARAMETER;
+import static uk.gov.hmcts.reform.civil.service.BulkPrintService.FILE_NAMES;
 import static uk.gov.hmcts.reform.civil.service.BulkPrintService.RECIPIENTS;
+import static uk.gov.hmcts.reform.civil.service.BulkPrintService.XEROX_TYPE_PARAMETER;
 
 @ExtendWith(SpringExtension.class)
 class BulkPrintServiceTest {
@@ -37,15 +38,30 @@ class BulkPrintServiceTest {
     private final String letterType = "Letter type";
     private final String claimId = "1";
     private final List<String> recipients = Arrays.asList("person one", "person two");
+    private final List<String> filenames = List.of("test.pdf");
 
     private final Map<String, Object> additionalInformation =
         Map.of(ADDITIONAL_DATA_LETTER_TYPE_KEY, letterType,
                ADDITIONAL_DATA_CASE_IDENTIFIER_KEY, claimId,
                ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY, claimId,
+               RECIPIENTS, recipients,
+               FILE_NAMES, filenames
+        );
+
+    private final Map<String, Object> additionalInformationV1 =
+        Map.of(ADDITIONAL_DATA_LETTER_TYPE_KEY, letterType,
+               ADDITIONAL_DATA_CASE_IDENTIFIER_KEY, claimId,
+               ADDITIONAL_DATA_CASE_REFERENCE_NUMBER_KEY, claimId,
                RECIPIENTS, recipients
         );
+
     private final byte[] letterTemplate = new byte[]{1, 2, 3};
     private final LetterWithPdfsRequest letter =
+        new LetterWithPdfsRequest(List.of(Base64.getEncoder().encodeToString(letterTemplate)),
+                                  XEROX_TYPE_PARAMETER, additionalInformationV1
+        );
+
+    private final LetterWithPdfsRequest letterWithFilenames =
         new LetterWithPdfsRequest(List.of(Base64.getEncoder().encodeToString(letterTemplate)),
                                   XEROX_TYPE_PARAMETER, additionalInformation
         );
@@ -55,6 +71,13 @@ class BulkPrintServiceTest {
         given(authTokenGenerator.generate()).willReturn(authentication);
         bulkPrintService.printLetter(letterTemplate, claimId, claimId, letterType, recipients);
         verify(sendLetterApi).sendLetter(refEq(authentication), refEq(letter));
+    }
+
+    @Test
+    void shouldSendLetterToBulkPrintWithFilenamesSuccessfully() {
+        given(authTokenGenerator.generate()).willReturn(authentication);
+        bulkPrintService.printLetter(letterTemplate, claimId, claimId, letterType, recipients, List.of("test.pdf"));
+        verify(sendLetterApi).sendLetter(refEq(authentication), refEq(letterWithFilenames));
     }
 
 }
