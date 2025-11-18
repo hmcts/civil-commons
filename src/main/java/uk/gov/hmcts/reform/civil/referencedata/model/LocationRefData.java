@@ -7,6 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder(toBuilder = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LocationRefData {
 
     private String courtVenueId;
