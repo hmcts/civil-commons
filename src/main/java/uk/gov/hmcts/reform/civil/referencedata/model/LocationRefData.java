@@ -28,6 +28,8 @@ public class LocationRefData {
     private String parentLocation;
     private String externalShortName;
     private String welshExternalShortName;
+    private String isCaseManagementLocation;
+    private String isHearingLocation;
 
     @JsonCreator
     LocationRefData(@JsonProperty("court_venue_id") String courtVenueId,
