@@ -50,7 +50,9 @@ public class LocationRefData {
                     @JsonProperty("location_type") String locationType,
                     @JsonProperty("parent_location") String parentLocation,
                     @JsonProperty("external_short_name") String externalShortName,
-                    @JsonProperty("welsh_external_short_name") String welshExternalShortName) {
+                    @JsonProperty("welsh_external_short_name") String welshExternalShortName,
+                    @JsonProperty("is_case_management_location") String isCaseManagementLocation,
+                    @JsonProperty("is_hearing_location") String isHearingLocation) {
         this.courtVenueId = courtVenueId;
         this.epimmsId = epimmsId;
         this.siteName = siteName;
@@ -70,5 +72,7 @@ public class LocationRefData {
         this.parentLocation = parentLocation;
         this.externalShortName = externalShortName;
         this.welshExternalShortName = welshExternalShortName;
+        this.isCaseManagementLocation = isCaseManagementLocation;
+        this.isHearingLocation = isHearingLocation;
     }
 }
