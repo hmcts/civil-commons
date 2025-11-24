@@ -3,6 +3,7 @@ package uk.gov.hmcts.reform.civil.service;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.authorisation.generators.AuthTokenGenerator;
 import uk.gov.hmcts.reform.civil.crd.client.ListOfValuesApi;
@@ -18,8 +19,10 @@ public class CategoryService {
     private final ListOfValuesApi listOfValuesApi;
     private final AuthTokenGenerator authTokenGenerator;
 
+    @Cacheable(value = "civilCaseCategoryCache", key = "'allCaseCategories'")
     public Optional<CategorySearchResult> findCategoryByCategoryIdAndServiceId(String authToken, String categoryId, String serviceId) {
         try {
+            log.info("[CategoryService] Cache MISS → calling RD Common Data API to fetch all case categories");
             return Optional.ofNullable(listOfValuesApi.findCategoryByCategoryIdAndServiceId(categoryId, serviceId, authToken,
                                                                                             authTokenGenerator.generate()));
         } catch (FeignException.NotFound ex) {
